@@ -1,5 +1,4 @@
 ---
-
 - name: check for Sublime Text 2 already unpacked
   action: command ls '/dev/'
   register: st2_unpacked

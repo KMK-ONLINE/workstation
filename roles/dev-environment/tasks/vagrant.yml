@@ -1,5 +1,4 @@
 ---
-
 - name: is Vagrant already installed?
   action: command which vagrant
   register: vagrant_which

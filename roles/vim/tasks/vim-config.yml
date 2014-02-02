@@ -1,0 +1,22 @@
+---
+
+# move .vim-config directory to variable
+# exit if it looks setup
+
+- name: check for Neo Vim Config already installed
+  action: command ls -a '/home/{{user}}/'
+  register: home_directory
+  ignore_errors: True
+
+- name: Checkout Neo Vim Config
+  git: repo=git://github.com/neo/vim-config.git
+       dest='/home/{{user}}/.vim-config'
+       version=master
+  when: "'.vim-config' not in home_directory.stdout"
+
+- name: Symlink files into home home directory and initialize plugins
+  shell: yes | rake chdir=/home/{{user}}/.vim-config/
+  when: "'.gvimrc' not in home_directory.stdout"
+
+- name: Update .gvimrc
+  copy: src=gvimrc dest=/home/{{user}}/.vim-config/.gvimrc

@@ -1,7 +1,5 @@
 ---
 - include: git.yml
-- include: vim.yml
-- include: ctags.yml
-- include: sublime-text-2.yml
+- include: ruby.yml
 - include: virtualbox.yml
 - include: vagrant.yml
