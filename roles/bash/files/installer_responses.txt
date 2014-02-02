@@ -1,0 +1,62 @@
+jekyll: n
+
+aliases: none
+
+plugins: some
+  base: n
+  battery: y
+  browser: n
+  chruby-auto: n
+  chruby: n
+  dirs: y
+  extract: y
+  fasd: n
+  git: y
+  hg: n
+  java: n
+  javascript: n
+  jekyll: n
+  latex: n
+  nginx: n
+  node: n
+  nvm: n
+  osx: n
+  python: n
+  rbenv: n
+  ruby: y
+  rvm: n
+  ssh: n
+  subversion: n
+  tmuxinator: n
+  tmux: n
+  todo: n
+  vagrant: n
+  virtualenv: n
+  zautoenv: n
+  zplugins:n
+  todo: plugins: n
+  todo plugins: n
+  todo_completion: n
+  todo: n
+
+completion: some
+
+  bash-it: y
+  brew: n
+  capistrano: n
+  defaults: y
+  django: n
+  drush: n
+  fabric: n
+  gem: n
+  git: y
+  git_flow: n
+  grunt: n
+  homesick: n
+  maven: n
+  pip: n
+  rake: n
+  ssh: y
+  tmux: n
+  todo: n
+

@@ -1,0 +1,23 @@
+---
+
+# move directory to variable
+# exit if it looks setup
+
+- name: check if Bash it already installed
+  action: command ls -a '/home/{{user}}/'
+  register: home_directory
+  ignore_errors: True
+
+- name: Checkout Bash it
+  git: repo=git://github.com/revans/bash-it.git
+       dest='/home/{{user}}/.bash_it'
+       version=master
+
+# this isn't expanding properly...
+# - name: Creates the .bash_profile
+#   shell: echo $'n\nnone\nall\nall' | ./install.sh chdir=/home/{{user}}/.bash_it
+#   tags:
+#    - debug
+
+- name: Update .bash_profile
+  copy: src=bash_profile dest=/home/{{user}}/.bash_profile
