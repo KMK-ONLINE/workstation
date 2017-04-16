@@ -1,5 +1,0 @@
----
-- include: git.yml
-- include: ruby.yml
-- include: virtualbox.yml
-- include: vagrant.yml

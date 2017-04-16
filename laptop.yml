@@ -1,0 +1,29 @@
+- name: Restore my comphy laptop environment
+
+  hosts: all
+  become: true
+
+  vars:
+    home_dir: "/home/{{ lookup('env','USER') }}"
+
+  pre_tasks:
+    roles:
+      - roles/ansible
+
+  tasks:
+    # name: Show me the home dir
+    # shell: echo {{ home_dir }}
+
+    # - name: Install base applications.
+    #   apt: pkg={{item}} update_cache=yes state=latest
+    #   with_items:
+    #     - steam
+
+  roles:
+    - zzet.rbenv
+    - roles/bash-it
+    - roles/vim
+    - FGtatsuro.vagrant
+    - cmprescott.chrome
+    - iknite.spotify
+    - wtanaka.dropbox

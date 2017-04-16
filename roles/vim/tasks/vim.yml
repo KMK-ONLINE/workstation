@@ -1,4 +1,0 @@
----
-- name: install vim
-  action: apt pkg=vim-gnome state=latest
-  sudo: True

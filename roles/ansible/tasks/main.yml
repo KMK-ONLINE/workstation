@@ -1,0 +1,37 @@
+# TODO: check if ansible is already installed
+
+- name: Install ansible dependencies
+  apt: pkg={{ item }} state=present
+  with_items:
+    - git
+    - libffi-dev
+    - libssl-dev
+    - python-dev
+    - python-pip
+
+- name: Install Boto for ansible
+  pip: name=boto state=present extra_args='-U'
+
+- name: Install setuptools as required by ansible
+  pip: name=setuptools state=present extra_args='-U'
+
+- name: Install ansible
+  pip: name="git+http://github.com/KMK-ONLINE/ansible@2.2.x" editable=False state=present extra_args='-U'
+
+- name: Install libcloud
+  pip: name="git+http://github.com/KMK-ONLINE/libcloud@1.3.x" editable=False state=present extra_args='-U'
+
+- name: Make ansible config directory
+  file: path=/etc/ansible state=directory
+
+- name: Copy ansible config
+  copy: src=ansible.cfg dest=/etc/ansible/ansible.cfg owner=root group=root mode=0764
+
+- name: Make ansible plugin directory
+  file: path=/etc/ansible/plugin state=directory
+
+- name: Copy ansible config
+  copy: src=plugins/{{ item }} dest=/etc/ansible/plugin/{{ item }} owner=root group=root mode=0664
+  with_items:
+    - profile_tasks.py
+    - exit_non_zero.py

@@ -1,6 +1,0 @@
----
-- hosts: development
-  roles:
-    - dev-environment
-    - bash
-    - vim

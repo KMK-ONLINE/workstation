@@ -1,5 +1,0 @@
----
-ansible_connection: local
-user: tommy
-group: tommy
-
