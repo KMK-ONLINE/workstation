@@ -53,14 +53,14 @@
 - evernote
 - slow wifi?!
 
-    $ sudo vi /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
-    # powersave 3 => 2?
+        $ sudo vi /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+        # powersave 3 => 2?
 
-    $ dmesg
-    $ watch -n1 iwconfig
+        $ dmesg
+        $ watch -n1 iwconfig
 
-    # missing firmware 5, maybe just try loading 4 as 5 for the time being.. better than not loading any?
-    $ sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/firmware-4.bin /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin
+        # missing firmware 5, maybe just try loading 4 as 5 for the time being.. better than not loading any?
+        $ sudo cp /lib/firmware/ath10k/QCA6174/hw3.0/firmware-4.bin /lib/firmware/ath10k/QCA6174/hw3.0/firmware-5.bin
 
 
 ### ideal partition.. couldn't install this way because my copy of windows is shite
