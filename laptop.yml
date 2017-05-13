@@ -32,14 +32,8 @@
       with_items:
         - adobe-flashplugin
 
-  #
-  # look into linux laptop power management tools, had some article here idk where it went...
-  #
-  # move to gnome... get ready for the death of unity
-  # http://www.omgubuntu.co.uk/2016/05/install-gnome-3-20-ubuntu-16-04-lts
-  #
-
   roles:
+    - { role: roles/dnscrypt-proxy }
     - { role: roles/dropbox, become: false }
     - roles/bash-it
     - roles/flux
@@ -49,4 +43,3 @@
     - FGtatsuro.vagrant
     - cmprescott.chrome
     - iknite.spotify
-

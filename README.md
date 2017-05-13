@@ -35,12 +35,15 @@
     `cd Workspace`
     `git clone git@github.com:sillylogger/workstation.git`
     `sudo chown `whoami`:`whoami` -R /etc/ansible/`
-    `ansible-galaxy -r requirements.yml`
+    `ansible-galaxy install -r workstation/requirements.yml`
     `ansible-playbook -i 127.0.0.1, workstation/laptop.yml -vvvv`
 
 ### Stuff I need to fix / install
 
-- what about using $HOME instead of home_dir
+move to gnome... the death of Unity is upon us!
+http://www.omgubuntu.co.uk/2016/05/install-gnome-3-20-ubuntu-16-04-lts
+
+- what about using $HOME instead of home\_dir
 - clipboard buffer?
 - backups?
 - window management?
@@ -50,7 +53,7 @@
 
 ### :-(
 
-- onepassword
+- look into linux laptop power management tools, had some article here idk where it went...
 - evernote
 - slow wifi?!
 

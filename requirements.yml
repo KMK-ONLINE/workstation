@@ -2,4 +2,6 @@
 - src: FGtatsuro.vagrant
 - src: cmprescott.chrome
 - src: iknite.spotify
+- src: juju4.ansible-dnscrypt-proxy
 - src: wtanaka.dropbox
+
