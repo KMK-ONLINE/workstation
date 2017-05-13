@@ -31,15 +31,24 @@
       apt: pkg={{item}} update_cache=yes state=latest
       with_items:
         - adobe-flashplugin
+        - glances
 
   roles:
-    - { role: roles/dnscrypt-proxy }
-    - { role: roles/dropbox, become: false }
-    - roles/bash-it
-    - roles/flux
-    - roles/git
-    - roles/system
-    - roles/vim
-    - FGtatsuro.vagrant
-    - cmprescott.chrome
-    - iknite.spotify
+    # tags: focus # helpful for ./focus.sh
+    - role: roles/dnscrypt-proxy
+
+    - role: roles/dropbox
+      become: false
+
+    - role: roles/ruby
+      become: false
+
+    - role: roles/bash-it
+    - role: roles/flux
+    - role: roles/git
+    - role: roles/system
+    - role: roles/vim
+    - role: FGtatsuro.vagrant
+    - role: cmprescott.chrome
+    - role: iknite.spotify
+

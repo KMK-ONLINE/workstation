@@ -1,7 +1,8 @@
 - src: FGtatsuro.ansible
 - src: FGtatsuro.vagrant
 - src: cmprescott.chrome
+- src: ferrarimarco.chruby
+- src: ferrarimarco.ruby-install
 - src: iknite.spotify
 - src: juju4.ansible-dnscrypt-proxy
 - src: wtanaka.dropbox
-
