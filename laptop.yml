@@ -15,9 +15,14 @@
     - name: Show me the home dir
       shell: echo {{ home_dir }}
 
+    - name: Create the Workspace
+      become: no
+      file: path="{{ home_dir }}/Workspace" state=directory
+
     - name: Install base applications.
       apt: pkg={{item}} update_cache=yes state=latest
       with_items:
+        - adobe-flashplugin
         - steam
 
   roles:

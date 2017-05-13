@@ -45,6 +45,7 @@
 - window management?
 - mail client -- Nylas Mail?
 - mouse & touchpad, natural scrolling
+- synology-assistant
 
 ### :-(
 

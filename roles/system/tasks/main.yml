@@ -1,0 +1,15 @@
+- name: Remove unnecessary examples desktop link
+  file: path="{{ home_dir }}/examples.desktop" state=absent
+
+- name: Remove silly locked items from launcher
+  shell: dbus-launch gsettings set com.canonical.Unity.Launcher favorites "['application://gnome-terminal.desktop', 'application://chromium-browser.desktop', 'application://firefox.desktop', 'unity://running-apps', 'application://org.gnome.Nautilus.desktop', 'unity://expo-icon', 'unity://devices', 'application://unity-control-center.desktop']"
+
+- name: Set monitor timeout
+  shell: dbus-launch dconf write /org/gnome/desktop/session/idle-delay 600
+
+- name: Set screen lock
+  shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-enabled true
+
+- name: Set screen delay
+  shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-delay 1800
+
