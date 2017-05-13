@@ -17,6 +17,7 @@
   become: no
   copy: src=gitignore_global dest="{{ home_dir }}/.gitignore_global"
 
+# Move this to square's git pair script?
 - name: Install `git pair` command via gem
   gem:
     name: pivotal_git_scripts

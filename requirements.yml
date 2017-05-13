@@ -1,7 +1,5 @@
 - src: FGtatsuro.ansible
-- src: zzet.rbenv
 - src: FGtatsuro.vagrant
-- src: wtanaka.dropbox
 - src: cmprescott.chrome
 - src: iknite.spotify
-
+- src: wtanaka.dropbox

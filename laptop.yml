@@ -10,13 +10,6 @@
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
-    rbenv:
-      env: system
-      version: v1.1.0
-      default_ruby: 2.4.0
-      rubies:
-        - version: 2.4.0
-        - version: 2.4.1
 
   tasks:
     - name: Show me the home dir
@@ -38,11 +31,16 @@
       apt: pkg={{item}} update_cache=yes state=latest
       with_items:
         - adobe-flashplugin
-        - steam
+
+  #
+  # look into linux laptop power management tools, had some article here idk where it went...
+  #
+  # move to gnome... get ready for the death of unity
+  # http://www.omgubuntu.co.uk/2016/05/install-gnome-3-20-ubuntu-16-04-lts
+  #
 
   roles:
     - { role: roles/dropbox, become: false }
-    - zzet.rbenv
     - roles/bash-it
     - roles/flux
     - roles/git
@@ -51,3 +49,4 @@
     - FGtatsuro.vagrant
     - cmprescott.chrome
     - iknite.spotify
+
