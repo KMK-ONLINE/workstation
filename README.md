@@ -36,7 +36,7 @@
     `git clone git@github.com:sillylogger/workstation.git`
     `sudo chown `whoami`:`whoami` -R /etc/ansible/`
     `ansible-galaxy -r requirements.yml`
-    `ansible-playbook -i 192.168.0.11, workstation/laptop.yml -vvvv`
+    `ansible-playbook -i 127.0.0.1, workstation/laptop.yml -vvvv`
 
 ### Stuff I need to fix / install
 
@@ -45,7 +45,6 @@
 - window management?
 - mail client -- Nylas Mail?
 - mouse & touchpad, natural scrolling
-- git config global
 
 ### :-(
 

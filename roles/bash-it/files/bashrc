@@ -23,18 +23,28 @@ source $BASH_IT/bash_it.sh
 
 # Ignore gvim errors
 alias gvim="gvim 2>/dev/null"
+alias mvim="gvim 2>/dev/null"
+
+caps2ctrl(){
+  setxkbmap -device $1 -layout us -option ctrl:nocaps
+}
 
 # Ata & Ardan's keyboard aliases
   alias x='xinput --list'
 
-  colemak(){ setxkbmap -device $1 -layout us -variant colemak -option caps:backspace }
+  colemak(){
+    setxkbmap -device $1 -layout us -variant colemak -option caps:backspace
+  }
   alias c=colemak
 
-  dvorak(){ setxkbmap -device $1 -layout us -variant dvorak }
+  dvorak(){
+    setxkbmap -device $1 -layout us -variant dvorak
+  }
   alias d=dvorak
 
-  qwerty(){ setxkbmap -device $1 -layout us }
+  qwerty(){
+    setxkbmap -device $1 -layout us
+  }
   alias qa='setxkbmap -layout us' # Always available to get you back to Query
   alias q=qwerty
 
-  caps2ctrl(){ setxkbmap -device $1 -layout us -option ctrl:nocaps }

@@ -1,0 +1,27 @@
+- name: Install git
+  apt: name={{item}} state=present
+  with_items:
+    - git
+
+- name: Download old version gitg
+  get_url: url='http://ftp.debian.org/debian/pool/main/g/gitg/gitg_0.2.7-3_amd64.deb' dest='/tmp'
+
+- name: Install gitg
+  command: dpkg -i /tmp/gitg_0.2.7-3_amd64.deb
+
+- name: Use our .gitconfig
+  become: no
+  copy: src=gitconfig dest="{{ home_dir }}/.gitconfig"
+
+- name: Use our .gitignore_global
+  become: no
+  copy: src=gitignore_global dest="{{ home_dir }}/.gitignore_global"
+
+- name: Install `git pair` command via gem
+  gem:
+    name: pivotal_git_scripts
+    state: present
+
+- name: Use our .pairs file
+  become: no
+  copy: src=pairs dest="{{ home_dir }}/.pairs"
