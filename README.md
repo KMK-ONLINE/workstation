@@ -40,6 +40,7 @@
 
 ### Stuff I need to fix / install
 
+- what about using $HOME instead of home_dir
 - clipboard buffer?
 - backups?
 - window management?

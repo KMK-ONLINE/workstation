@@ -1,0 +1,37 @@
+- name: Make sure my home directory folders exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ home_dir }}/Desktop"
+    - "{{ home_dir }}/Documents"
+    - "{{ home_dir }}/Pictures"
+
+- name: Copy everything from ~/Dropbox/* to ~/*
+  shell: mv "{{ item.src }}"/* "{{ item.dest }}"
+  register: mv_cmd
+  with_items:
+    - { src: "{{ home_dir }}/Dropbox/Desktop",    dest: "{{ home_dir }}/Desktop" }
+    - { src: "{{ home_dir }}/Dropbox/Documents",  dest: "{{ home_dir }}/Documents" }
+    - { src: "{{ home_dir }}/Dropbox/Pictures",   dest: "{{ home_dir }}/Pictures" }
+  failed_when: mv_cmd.rc > 1
+
+- name: Remove Dropbox's folders
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ home_dir }}/Dropbox/Desktop"
+    - "{{ home_dir }}/Dropbox/Documents"
+    - "{{ home_dir }}/Dropbox/Pictures"
+
+- name: Symlink Dropbox to the real folders
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  with_items:
+    - { src: "{{ home_dir }}/Desktop",    dest: "{{ home_dir }}/Dropbox/Desktop" }
+    - { src: "{{ home_dir }}/Documents",  dest: "{{ home_dir }}/Dropbox/Documents" }
+    - { src: "{{ home_dir }}/Pictures",   dest: "{{ home_dir }}/Dropbox/Pictures" }
+

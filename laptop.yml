@@ -10,6 +10,13 @@
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
+    rbenv:
+      env: system
+      version: v1.1.0
+      default_ruby: 2.4.0
+      rubies:
+        - version: 2.4.0
+        - version: 2.4.1
 
   tasks:
     - name: Show me the home dir
@@ -19,6 +26,14 @@
       become: no
       file: path="{{ home_dir }}/Workspace" state=directory
 
+    - name: Add Evernote link
+      become: no
+      copy: src=Evernote.desktop dest="{{ home_dir }}/Evernote.desktop"
+
+    - name: Add LastPass Link
+      become: no
+      copy: src=LastPass.desktop dest="{{ home_dir }}/LastPass.desktop"
+
     - name: Install base applications.
       apt: pkg={{item}} update_cache=yes state=latest
       with_items:
@@ -26,12 +41,13 @@
         - steam
 
   roles:
+    - { role: roles/dropbox, become: false }
     - zzet.rbenv
     - roles/bash-it
-    - roles/vim
+    - roles/flux
     - roles/git
+    - roles/system
+    - roles/vim
     - FGtatsuro.vagrant
     - cmprescott.chrome
     - iknite.spotify
-    - wtanaka.dropbox
-
