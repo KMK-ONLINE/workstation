@@ -6,10 +6,6 @@
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
 
-  pre_tasks:
-    roles:
-      - roles/ansible
-
   tasks:
     # name: Show me the home dir
     # shell: echo {{ home_dir }}
