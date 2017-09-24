@@ -5,7 +5,6 @@
 - src: rdeknijf.chromedriver
 - src: ferrarimarco.chruby
 - src: ferrarimarco.ruby-install
-- src: iknite.spotify
 - src: jpnewman.redis
 - src: juju4.ansible-dnscrypt-proxy
 - src: wtanaka.dropbox

@@ -36,13 +36,13 @@
     # tags: focus # ./focus.sh
 
     - role: roles/vim
+    - role: roles/bash-it
     - role: roles/dnscrypt-proxy
     - role: roles/dropbox
 
     - role: roles/ruby
       become: true
 
-    - role: roles/bash-it
     - role: roles/flux
     - role: roles/git
     - role: roles/shortcuts
@@ -75,6 +75,5 @@
     - role: jpnewman.redis
       become: true
 
-    # Not happy on re-runs :-(
-    - role: iknite.spotify
+    - role: roles/spotify
       become: true
