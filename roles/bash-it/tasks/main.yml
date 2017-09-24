@@ -1,5 +1,4 @@
 - name: Checkout Bash it
-  become: no
   git: repo=git://github.com/bash-it/bash-it.git
        dest="{{ home_dir }}/.bash_it"
        depth=1
@@ -8,14 +7,11 @@
        accept_hostkey=true
 
 - name: Install bash-it
-  become: no
   shell: "{{ home_dir }}/.bash_it/install.sh --silent"
 
 - name: Update with our .bashrc
-  become: no
   copy: src=bashrc dest="{{ home_dir }}/.bashrc"
 
 - name: Update with our .inputrc
-  become: no
   copy: src=inputrc dest="{{ home_dir }}/.inputrc"
 

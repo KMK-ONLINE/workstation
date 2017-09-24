@@ -9,9 +9,9 @@
     - vim-gnome
     - exuberant-ctags
     - silversearcher-ag
+  become: true
 
 - name: Checkout pretty fonts
-  become: no
   git: repo=git://github.com/powerline/fonts
        dest="{{ home_dir }}/.fonts"
        depth=1
@@ -19,11 +19,9 @@
        accept_hostkey=yes
 
 - name: Install pretty fonts
-  become: no
   command: "{{ home_dir }}/.fonts/install.sh"
 
 - name: Checkout our Vim Config
-  become: no
   git: repo=git://github.com/kmk-online/vim-config.git
        dest="{{ home_dir }}/.vim-config"
        depth=1
@@ -31,5 +29,4 @@
        accept_hostkey=yes
 
 - name: Initialize vim config
-  become: no
   command: "{{ home_dir }}/.vim-config/install.sh"

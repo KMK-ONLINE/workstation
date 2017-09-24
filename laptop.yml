@@ -6,7 +6,6 @@
 
 - name: Restore my comphy laptop environment
   hosts: all
-  become: true
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
@@ -36,21 +35,14 @@
 
   roles:
     # tags: focus # ./focus.sh
+
     - role: roles/dnscrypt-proxy
-
     - role: roles/dropbox
-      become: false
-
     - role: roles/ruby
-      become: false
-
     - role: roles/bash-it
     - role: roles/flux
     - role: roles/git
-
     - role: roles/shortcuts
-      become: false
-
     - role: roles/vim
 
     - role: ANXS.postgresql
@@ -63,9 +55,16 @@
           db: postgres
           role_attr_flags: "CREATEDB"
       postgresql_ext_install_dev_headers: yes
+      become: true
 
     - role: FGtatsuro.vagrant
-    - role: bearandgiraffe.heroku-cli
-    - role: cmprescott.chrome
-    - role: iknite.spotify
+      become: true
 
+    - role: bearandgiraffe.heroku-cli
+      become: true
+
+    - role: cmprescott.chrome
+      become: true
+
+    - role: iknite.spotify
+      become: true

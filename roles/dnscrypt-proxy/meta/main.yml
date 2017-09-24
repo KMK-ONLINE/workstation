@@ -1,3 +1,4 @@
 ---
 dependencies:
-  - { role: juju4.ansible-dnscrypt-proxy }
+  - role: juju4.ansible-dnscrypt-proxy
+    become: true

@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - { role: ferrarimarco.chruby }
-  - { role: ferrarimarco.ruby-install }
+  - role: ferrarimarco.chruby
+  - role: ferrarimarco.ruby-install
