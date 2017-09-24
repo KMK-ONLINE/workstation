@@ -14,9 +14,11 @@
     - name: Show me the home dir
       shell: echo {{ home_dir }}
 
-    - name: Create the Workspace
-      become: no
-      file: path="{{ home_dir }}/Workspace" state=directory
+    - name: Install base applications.
+      apt: pkg={{item}} update_cache=yes state=latest
+      with_items:
+        - adobe-flashplugin
+        - glances
 
     - name: Set monitor timeout
       shell: dbus-launch dconf write /org/gnome/desktop/session/idle-delay 600
@@ -27,11 +29,12 @@
     - name: Set screen delay
       shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-delay 1800
 
-    - name: Install base applications.
-      apt: pkg={{item}} update_cache=yes state=latest
-      with_items:
-        - adobe-flashplugin
-        - glances
+    - name: Map keyboard caps to ctrl
+      replace:
+        path: /etc/default/keyboard
+        regexp: 'XKBOPTIONS=""'
+        replace: 'XKBOPTIONS="ctrl:nocaps"'
+      become: true
 
   roles:
     # tags: focus # ./focus.sh
@@ -66,5 +69,6 @@
     - role: cmprescott.chrome
       become: true
 
-    - role: iknite.spotify
-      become: true
+    # Not happy on re-runs :-(
+    # - role: iknite.spotify
+    #   become: true

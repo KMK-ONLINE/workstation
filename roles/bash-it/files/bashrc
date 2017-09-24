@@ -25,9 +25,10 @@ source $BASH_IT/bash_it.sh
 alias gvim="gvim 2>/dev/null"
 alias mvim="gvim 2>/dev/null"
 
-caps2ctrl(){
-  setxkbmap -device $1 -layout us -option ctrl:nocaps
-}
+# caps2ctrl(){
+#   setxkbmap -device $1 -layout us -option ctrl:nocaps
+# }
+
 
 # Ata & Ardan's keyboard aliases
   alias x='xinput --list'

@@ -40,15 +40,16 @@
 
 ### Stuff I need to fix / install
 
+- clipboard buffer?
+- mouse & touchpad, natural scrolling, getting the trackpad to be less fucking sensitive
+- window management?
+- backups?
+
 move to gnome... the death of Unity is upon us!
 http://www.omgubuntu.co.uk/2016/05/install-gnome-3-20-ubuntu-16-04-lts
 
 - what about using $HOME instead of home\_dir
-- clipboard buffer?
-- backups?
-- window management?
 - mail client -- Nylas Mail?
-- mouse & touchpad, natural scrolling
 - synology-assistant
 
 ### :-(
