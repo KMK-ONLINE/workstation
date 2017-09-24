@@ -1,29 +1,40 @@
+# Change this to the Fat32 mount partition, ok done.
+# Now sort out it's premissions:
+# sudo mount -t vfat /dev/nvme0n1p6 /media/shared/ --options
+# rw,exec,uid=1000,gid=1000,umask=022
+
 - name: Make sure my home directory folders exist
   file:
     path: "{{ item }}"
     state: directory
+    mode: 0755
   with_items:
-    - "{{ home_dir }}/Desktop"
-    - "{{ home_dir }}/Documents"
     - "{{ home_dir }}/Dropbox"
+    - "{{ home_dir }}/Desktop"
+    - "{{ shared_dir }}/Documents"
+    - "{{ shared_dir }}/Pictures"
     - "{{ home_dir }}/Pictures"
+  ignore_errors: true
 
 - name: Copy everything from the Dropbox folders to the real folders
-  shell: mv "{{ item.src }}"/* "{{ item.dest }}"
-  register: mv_cmd
+  shell: rsync -avh item.src item.dest
+  register: rsync_cmd
   with_items:
-    - { src: "{{ home_dir }}/Dropbox/Desktop",    dest: "{{ home_dir }}/Desktop" }
-    - { src: "{{ home_dir }}/Dropbox/Documents",  dest: "{{ home_dir }}/Documents" }
-    - { src: "{{ home_dir }}/Dropbox/Pictures",   dest: "{{ home_dir }}/Pictures" }
-  failed_when: mv_cmd.rc > 1
+    - { src: "{{ home_dir }}/Dropbox/Desktop",     dest: "{{ home_dir }}/Desktop" }
+    - { src: "{{ home_dir }}/Dropbox/Documents",   dest: "{{ shared_dir }}/Documents" }
+    - { src: "{{ home_dir }}/Dropbox/Photography", dest: "{{ home_dir }}/Pictures" }
+    - { src: "{{ home_dir }}/Dropbox/Pictures",    dest: "{{ shared_dir }}/Pictures" }
+  failed_when: rsync_cmd.rc > 1
 
-- name: Remove the Dropbox folders
+- name: Remove the soon-to-be symlinked folders
   file:
     path: "{{ item }}"
     state: absent
   with_items:
     - "{{ home_dir }}/Dropbox/Desktop"
     - "{{ home_dir }}/Dropbox/Documents"
+    - "{{ home_dir }}/Documents"
+    - "{{ home_dir }}/Dropbox/Photography"
     - "{{ home_dir }}/Dropbox/Pictures"
 
 - name: Symlink Dropbox to the real folders
@@ -32,7 +43,9 @@
     dest: "{{ item.dest }}"
     state: link
   with_items:
-    - { src: "{{ home_dir }}/Desktop",    dest: "{{ home_dir }}/Dropbox/Desktop" }
-    - { src: "{{ home_dir }}/Documents",  dest: "{{ home_dir }}/Dropbox/Documents" }
-    - { src: "{{ home_dir }}/Pictures",   dest: "{{ home_dir }}/Dropbox/Pictures" }
+    - { src: "{{ home_dir }}/Desktop",      dest: "{{ home_dir }}/Dropbox/Desktop" }
+    - { src: "{{ shared_dir }}/Documents",  dest: "{{ home_dir }}/Dropbox/Documents" }
+    - { src: "{{ shared_dir }}/Documents",  dest: "{{ home_dir }}/Documents" }
+    - { src: "{{ home_dir }}/Pictures",     dest: "{{ home_dir }}/Dropbox/Photography" }
+    - { src: "{{ shared_dir }}/Pictures",   dest: "{{ home_dir }}/Dropbox/Pictures" }
 

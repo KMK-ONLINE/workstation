@@ -11,7 +11,3 @@
 
 - name: Update with our .bashrc
   copy: src=bashrc dest="{{ home_dir }}/.bashrc"
-
-- name: Update with our .inputrc
-  copy: src=inputrc dest="{{ home_dir }}/.inputrc"
-

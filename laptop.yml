@@ -1,51 +1,39 @@
+- include: base.yml
+
 - name: Restore my comphy laptop environment
   hosts: all
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
+    shared_dir: "/mnt/Shared"
 
   tasks:
     - name: Show me the home dir
       shell: echo {{ home_dir }}
 
-    - name: Install base applications.
-      apt: pkg={{item}} update_cache=yes state=latest
-      with_items:
-        - adobe-flashplugin
-        - glances
-
-    - name: Set monitor timeout
-      shell: dbus-launch dconf write /org/gnome/desktop/session/idle-delay 600
-
-    - name: Set screen lock
-      shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-enabled true
-
-    - name: Set screen delay
-      shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-delay 1800
-
-    - name: Map keyboard caps to ctrl
-      replace:
-        path: /etc/default/keyboard
-        regexp: 'XKBOPTIONS=""'
-        replace: 'XKBOPTIONS="ctrl:nocaps"'
-      become: true
-
-      # sudo dpkg-reconfigure keyboard-configuration
-
   roles:
+    # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh
 
-    - role: roles/vim
-    - role: roles/bash-it
-    - role: roles/dnscrypt-proxy
+    - role: roles/flux
+    - role: roles/shortcuts
+    - role: roles/settings-power
+
+    # This is just too flaky to run on it's own
+    # because of the automount and other issues
     - role: roles/dropbox
+
+    - role: roles/spotify
+      become: true
 
     - role: roles/ruby
       become: true
 
-    - role: roles/flux
-    - role: roles/git
-    - role: roles/shortcuts
+    - role: rdeknijf.chromedriver
+      become: true
+
+    - role: bearandgiraffe.heroku-cli
+      become: true
 
     - role: ANXS.postgresql
       postgresql_version: 9.6
@@ -59,21 +47,6 @@
       postgresql_ext_install_dev_headers: yes
       become: true
 
-    # on 17.04 this role can't find virutalbox 5.1 somehow fucked :-(
-    - role: FGtatsuro.vagrant
-      become: true
-
-    - role: bearandgiraffe.heroku-cli
-      become: true
-
-    - role: cmprescott.chrome
-      become: true
-
-    - role: rdeknijf.chromedriver
-      become: true
-
     - role: jpnewman.redis
       become: true
 
-    - role: roles/spotify
-      become: true

@@ -1,0 +1,9 @@
+- name: Set monitor timeout
+  shell: dbus-launch dconf write /org/gnome/desktop/session/idle-delay 600
+
+- name: Set screen lock
+  shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-enabled true
+
+- name: Set screen delay
+  shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-delay 1800
+

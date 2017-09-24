@@ -1,0 +1,15 @@
+- name: Map keyboard caps to ctrl
+  replace:
+    path: /etc/default/keyboard
+    regexp: 'XKBOPTIONS=""'
+    replace: 'XKBOPTIONS="ctrl:nocaps"'
+  become: true
+
+# could use this?:
+# sudo dpkg-reconfigure keyboard-configuration
+
+- name: Update with our .inputrc
+  copy: src=inputrc dest="{{ home_dir }}/.inputrc"
+
+
+

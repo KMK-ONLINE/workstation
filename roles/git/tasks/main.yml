@@ -1,5 +1,5 @@
 - name: Install git
-  apt: name={{item}} state=present
+  apt: name={{item}} state=present update_cache=yes
   with_items:
     - git
   become: true
