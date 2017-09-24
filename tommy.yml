@@ -16,12 +16,13 @@
     # tags: focus # ./focus.sh
 
     - role: roles/flux
-    - role: roles/shortcuts
+    - role: roles/shortcuts-tommy
     - role: roles/settings-power
 
     # This is just too flaky to run on it's own
     # because of the automount and other issues
-    - role: roles/dropbox
+    # but it is working after my /mnt/Shared is mounted
+    # - role: roles/dropbox
 
     - role: roles/spotify
       become: true

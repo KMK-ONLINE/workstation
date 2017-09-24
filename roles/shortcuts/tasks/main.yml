@@ -1,24 +1,14 @@
 - name: Remove unnecessary examples link
   file: path="{{ home_dir }}/examples.desktop" state=absent
 
-- name: Create .icon dir
-  file: path="{{ home_dir }}/.icons" state=directory
-
-- name: Add Evernote link
-  copy: src=Evernote.desktop dest="{{ home_dir }}/Desktop/Evernote.desktop"
-
-- name: Add Evernote icon
-  copy: src=Evernote.png dest="{{ home_dir }}/.icons/Evernote.png"
-
-- name: Add LastPass Link
-  copy: src=LastPass.desktop dest="{{ home_dir }}/Desktop/LastPass.desktop"
-
-- name: Add LastPass icon
-  copy: src=LastPass.png dest="{{ home_dir }}/.icons/LastPass.png"
-
-#
-# This isn't working, perhaps because logged in and running...
+# This isn't working, even with `dbus-launch` and sudo, no go.
+# must google more.
 #
 # - name: Remove silly locked items from launcher
-#   shell: dbus-launch gsettings set com.canonical.Unity.Launcher favorites "['application://gnome-terminal.desktop', 'application://chromium-browser.desktop', 'application://firefox.desktop', 'unity://running-apps', 'application://org.gnome.Nautilus.desktop', 'unity://expo-icon', 'unity://devices', 'application://unity-control-center.desktop']"
+#   shell: dbus-launch gsettings set com.canonical.Unity.Launcher favorites "[ 'application://org.gnome.Nautilus.desktop', 'application://google-chrome.desktop', 'application://gnome-terminal.desktop', 'application://spotify.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices' ]"
+#   become: true
+#
+# - name: Default shortcuts in dash, just for reference
+#   shell: gsettings set com.canonical.Unity.Launcher favorites "[ 'application://org.gnome.Nautilus.desktop', 'application://firefox.desktop', 'application://libreoffice-writer.desktop', 'application://libreoffice-calc.desktop', 'application://libreoffice-impress.desktop', 'application://org.gnome.Software.desktop', 'application://ubuntu-amazon-default.desktop', 'application://unity-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices' ]"
+#
 #

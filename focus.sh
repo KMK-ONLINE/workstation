@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 
-./all.sh --tags=focus
+./all.sh $@ --tags=focus
 

@@ -22,6 +22,7 @@
     - role: roles/git
     - role: roles/copyq
     - role: roles/bash-it
+    - role: roles/shortcuts
     - role: roles/dnscrypt-proxy
     - role: roles/settings-input
     - role: roles/settings-display

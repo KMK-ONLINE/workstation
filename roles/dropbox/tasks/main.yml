@@ -17,14 +17,15 @@
   ignore_errors: true
 
 - name: Copy everything from the Dropbox folders to the real folders
-  shell: rsync -avh item.src item.dest
+  shell: "rsync -avh {{ item.src }} {{ item.dest }}"
   register: rsync_cmd
   with_items:
     - { src: "{{ home_dir }}/Dropbox/Desktop",     dest: "{{ home_dir }}/Desktop" }
     - { src: "{{ home_dir }}/Dropbox/Documents",   dest: "{{ shared_dir }}/Documents" }
     - { src: "{{ home_dir }}/Dropbox/Photography", dest: "{{ home_dir }}/Pictures" }
     - { src: "{{ home_dir }}/Dropbox/Pictures",    dest: "{{ shared_dir }}/Pictures" }
-  failed_when: rsync_cmd.rc > 1
+  become: true
+  ignore_errors: true
 
 - name: Remove the soon-to-be symlinked folders
   file:
