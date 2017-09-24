@@ -19,13 +19,14 @@
       become: no
       file: path="{{ home_dir }}/Workspace" state=directory
 
-    - name: Add Evernote link
-      become: no
-      copy: src=Evernote.desktop dest="{{ home_dir }}/Evernote.desktop"
+    - name: Set monitor timeout
+      shell: dbus-launch dconf write /org/gnome/desktop/session/idle-delay 600
 
-    - name: Add LastPass Link
-      become: no
-      copy: src=LastPass.desktop dest="{{ home_dir }}/LastPass.desktop"
+    - name: Set screen lock
+      shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-enabled true
+
+    - name: Set screen delay
+      shell: dbus-launch dconf write /org/gnome/desktop/screensaver/lock-delay 1800
 
     - name: Install base applications.
       apt: pkg={{item}} update_cache=yes state=latest
@@ -34,7 +35,7 @@
         - glances
 
   roles:
-    # tags: focus # helpful for ./focus.sh
+    # tags: focus # ./focus.sh
     - role: roles/dnscrypt-proxy
 
     - role: roles/dropbox
@@ -46,7 +47,10 @@
     - role: roles/bash-it
     - role: roles/flux
     - role: roles/git
-    - role: roles/system
+
+    - role: roles/shortcuts
+      become: false
+
     - role: roles/vim
 
     - role: ANXS.postgresql
