@@ -48,6 +48,17 @@
     - role: roles/git
     - role: roles/system
     - role: roles/vim
+
+    - role: ANXS.postgresql
+      postgresql_version: 9.6
+      postgresql_users:
+        - name: "{{ lookup('env','USER') }}"
+      postgresql_user_privileges:
+        - name: "{{ lookup('env','USER') }}"
+          priv: "ALL"
+          db: postgres
+          role_attr_flags: "CREATEDB"
+
     - role: FGtatsuro.vagrant
     - role: cmprescott.chrome
     - role: iknite.spotify
