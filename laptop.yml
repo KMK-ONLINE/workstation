@@ -1,9 +1,3 @@
-- name: Install ansible as a dependency
-  hosts: all
-  become: true
-  roles:
-    - FGtatsuro.ansible
-
 - name: Restore my comphy laptop environment
   hosts: all
 

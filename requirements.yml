@@ -1,5 +1,4 @@
 - src: ANXS.postgresql
-- src: FGtatsuro.ansible
 - src: FGtatsuro.vagrant
 - src: bearandgiraffe.heroku-cli
 - src: cmprescott.chrome

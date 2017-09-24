@@ -14,21 +14,21 @@
   become: true
 
 - name: Checkout pretty fonts
-  git: repo=git://github.com/powerline/fonts
-       dest="{{ home_dir }}/.fonts"
-       depth=1
-       update=true
-       accept_hostkey=yes
+  git:
+    repo: https://github.com/powerline/fonts.git
+    dest: "{{ home_dir }}/.fonts"
+    update: yes
+    accept_hostkey: yes
 
 - name: Install pretty fonts
   command: "{{ home_dir }}/.fonts/install.sh"
 
 - name: Checkout our Vim Config
-  git: repo=git://github.com/kmk-online/vim-config.git
-       dest="{{ home_dir }}/.vim-config"
-       depth=1
-       update=true
-       accept_hostkey=yes
+  git:
+    repo: https://github.com/KMK-ONLINE/vim-config.git
+    dest: "{{ home_dir }}/.vim-config"
+    update: yes
+    accept_hostkey: yes
 
 - name: Initialize vim config
   command: "{{ home_dir }}/.vim-config/install.sh"
