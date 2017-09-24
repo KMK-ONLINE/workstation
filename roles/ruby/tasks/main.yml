@@ -1,41 +1,37 @@
-# - name: Maybe necessary?
-#         as per: https://github.com/postmodern/chruby/wiki/Ruby
-#         so far, no need.. working ok
-#
-#   apt: name={{item}} state=present
-#   with_items:
-#     - build-essential
-#     - bison
-#     - zlib1g-dev
-#     - libyaml-dev
-#     - libssl-dev
-#     - libgdbm-dev
-#     - libreadline-dev
-#     - libffi-dev
-
-# TODO: add the ruby .gemrc no-ri no rdoc
+- name: Install the other Ruby development dependencies, mostly used by gems
+  # https://github.com/postmodern/chruby/wiki/Ruby
+  apt: name={{item}} state=present
+  with_items:
+    - bison
+    - build-essential
+    - cmake
+    - libffi-dev
+    - libgdbm-dev
+    - libqt5webkit5-dev
+    - libreadline-dev
+    - libssl-dev
+    - libyaml-dev
+    - qt5-default
+    - zlib1g-dev
+  become: true
 
 - name: Fetch the latest rubies
   command: ruby-install --latest
   become: false
 
-# `ruby-install` doesn't check if something is already installed so it
-# downloads and installs all every time, do not want that so comment out for now
-# TODO: make this conditional by checking on your own
-- name: Install 2.4.0 (latest on Heroku) and 2.4.1 because that's legit
-  command: ruby-install ruby {{item}}
-  with_items:
-    - 2.4.0
-    - 2.4.1
+- name: Check installed rubies
+  command: ls {{ home_dir }}/.rubies
+  register: rubies
+
+- name: Install ruby 2.4.0
+  command: ruby-install ruby 2.4.0
   become: false
+  when: rubies.stdout.find('2.4.0') == -1
 
-- name: Install the other Ruby development dependencies
-  apt: name={{item}} state=present
-  with_items:
-    - qt5-default
-    - libqt5webkit5-dev
-    - gstreamer1.0-x
-    - gstreamer1.0-tools
-    - gstreamer1.0-plugins-base
-  become: true
+- name: Install ruby 2.4.1
+  command: ruby-install ruby 2.4.1
+  become: false
+  when: rubies.stdout.find('2.4.1') == -1
 
+- name: Update our .gemrc
+  copy: src=gemrc dest="{{ home_dir }}/.gemrc"
