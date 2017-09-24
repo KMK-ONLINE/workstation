@@ -5,13 +5,10 @@
   with_items:
     - "{{ home_dir }}/Desktop"
     - "{{ home_dir }}/Documents"
+    - "{{ home_dir }}/Dropbox"
     - "{{ home_dir }}/Pictures"
 
-# Dropbox has been installed, but it needs clicking from the UI to create the
-# ~/Dropbox folder so we need to create it manually here if it doesn't exist
-# along with the symlinks 
-
-- name: Copy everything from ~/Dropbox/* to ~/*
+- name: Copy everything from the Dropbox folders to the real folders
   shell: mv "{{ item.src }}"/* "{{ item.dest }}"
   register: mv_cmd
   with_items:
@@ -20,7 +17,7 @@
     - { src: "{{ home_dir }}/Dropbox/Pictures",   dest: "{{ home_dir }}/Pictures" }
   failed_when: mv_cmd.rc > 1
 
-- name: Remove Dropbox's folders
+- name: Remove the Dropbox folders
   file:
     path: "{{ item }}"
     state: absent
