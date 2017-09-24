@@ -62,8 +62,10 @@
           priv: "ALL"
           db: postgres
           role_attr_flags: "CREATEDB"
+      postgresql_ext_install_dev_headers: yes
 
     - role: FGtatsuro.vagrant
+    - role: bearandgiraffe.heroku-cli
     - role: cmprescott.chrome
     - role: iknite.spotify
 
