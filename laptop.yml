@@ -69,6 +69,9 @@
     - role: cmprescott.chrome
       become: true
 
+    - role: rdeknijf.chromedriver
+      become: true
+
     - role: jpnewman.redis
       become: true
 

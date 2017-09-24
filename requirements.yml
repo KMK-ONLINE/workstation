@@ -3,6 +3,7 @@
 - src: FGtatsuro.vagrant
 - src: bearandgiraffe.heroku-cli
 - src: cmprescott.chrome
+- src: rdeknijf.chromedriver
 - src: ferrarimarco.chruby
 - src: ferrarimarco.ruby-install
 - src: iknite.spotify
