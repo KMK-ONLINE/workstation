@@ -22,15 +22,18 @@ export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 source $HOME/.secrets
 
-# Ignore gvim errors
-alias gvim="gvim 2>/dev/null"
-alias mvim="gvim 2>/dev/null"
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
-# Tommy's natrual scrolling
-# device=$(xinput list --id-only 'Razer  Razer Abyssus')
-# xinput set-prop $device 280 -1, -1, -1
+alias gitg="gitg &>/dev/null"
+alias gvim="gvim &>/dev/null"
+alias mvim="gvim &>/dev/null"
 
-# Ata & Ardan's keyboard aliases
+open() {
+  gnome-open $1 &>/dev/null
+}
+
+# Ata's keyboard aliases
   alias x='xinput --list'
 
   colemak(){
@@ -49,3 +52,13 @@ alias mvim="gvim 2>/dev/null"
   alias qa='setxkbmap -layout us' # Always available to get you back to Query
   alias q=qwerty
 
+# Natrual Scrolling
+  natural-scrolling() {
+    local device_id
+    printf "Devices:"
+    xinput list
+    printf "\n\n"
+    read -p "Device Id: " device_id
+    xinput set-prop $device_id 280 -1, -1, -1
+    printf "\n"
+  }
