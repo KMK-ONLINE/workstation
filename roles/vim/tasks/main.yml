@@ -17,6 +17,7 @@
   git:
     repo: https://github.com/powerline/fonts.git
     dest: "{{ home_dir }}/.fonts"
+    depth: 1
     update: yes
     accept_hostkey: yes
 
@@ -27,8 +28,36 @@
   git:
     repo: https://github.com/KMK-ONLINE/vim-config.git
     dest: "{{ home_dir }}/.vim-config"
+    depth: 1
     update: yes
     accept_hostkey: yes
 
-- name: Initialize vim config
-  command: "{{ home_dir }}/.vim-config/install.sh"
+- name: Create the Vim autoload path
+  file:
+    recurse: yes
+    state: directory
+    dest: "{{ home_dir }}/.vim-config/.vim/autoload"
+
+- name: Download the Plug plugin
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ home_dir }}/.vim-config/.vim/autoload/plug.vim"
+
+- name: Create symlinks to the vim configs
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  with_items:
+    - { src: "{{ home_dir }}/.vim-config/.vim",    dest: "{{ home_dir }}/.vim" }
+    - { src: "{{ home_dir }}/.vim-config/.vimrc",    dest: "{{ home_dir }}/.vimrc" }
+    - { src: "{{ home_dir }}/.vim-config/.gvimrc",    dest: "{{ home_dir }}/.gvimrc" }
+
+- name: Install the Vim plugins
+  command: vim +PlugInstall +qall
+
+- name: Fix the command-t plugin
+  command: rake make
+  args:
+    chdir: "{{ home_dir }}/.vim-config/.vim/plugged/command-t/"
+
