@@ -17,6 +17,7 @@
 
 - name: Fetch the latest rubies
   command: ruby-install --latest
+  become: false
 
 # `ruby-install` doesn't check if something is already installed so it
 # downloads and installs all every time, do not want that so comment out for now
@@ -26,6 +27,7 @@
   with_items:
     - 2.4.0
     - 2.4.1
+  become: false
 
 - name: Install the other Ruby development dependencies
   apt: name={{item}} state=present

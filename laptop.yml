@@ -38,18 +38,20 @@
 
       # sudo dpkg-reconfigure keyboard-configuration
 
-
   roles:
     # tags: focus # ./focus.sh
 
+    - role: roles/vim
     - role: roles/dnscrypt-proxy
     - role: roles/dropbox
+
     - role: roles/ruby
+      become: true
+
     - role: roles/bash-it
     - role: roles/flux
     - role: roles/git
     - role: roles/shortcuts
-    - role: roles/vim
 
     - role: ANXS.postgresql
       postgresql_version: 9.6
@@ -63,6 +65,7 @@
       postgresql_ext_install_dev_headers: yes
       become: true
 
+    # on 17.04 this role can't find virutalbox 5.1 somehow fucked :-(
     - role: FGtatsuro.vagrant
       become: true
 
@@ -73,12 +76,11 @@
       become: true
 
     - role: rdeknijf.chromedriver
-      tags: focus
       become: true
 
     - role: jpnewman.redis
       become: true
 
     # Not happy on re-runs :-(
-    # - role: iknite.spotify
-    #   become: true
+    - role: iknite.spotify
+      become: true

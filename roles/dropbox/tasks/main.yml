@@ -7,6 +7,10 @@
     - "{{ home_dir }}/Documents"
     - "{{ home_dir }}/Pictures"
 
+# Dropbox has been installed, but it needs clicking from the UI to create the
+# ~/Dropbox folder so we need to create it manually here if it doesn't exist
+# along with the symlinks 
+
 - name: Copy everything from ~/Dropbox/* to ~/*
   shell: mv "{{ item.src }}"/* "{{ item.dest }}"
   register: mv_cmd
