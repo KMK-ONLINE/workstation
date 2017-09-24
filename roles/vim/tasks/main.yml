@@ -4,9 +4,11 @@
   apt: pkg={{item}} state=present
   with_items:
     - git
-    - rake
     - vim
     - vim-gnome
+    - ruby
+    - ruby-dev
+    - rake
     - exuberant-ctags
     - silversearcher-ag
   become: true
