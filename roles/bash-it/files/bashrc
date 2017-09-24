@@ -20,15 +20,15 @@ export SCM_CHECK=true
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+source $HOME/.secrets
 
 # Ignore gvim errors
 alias gvim="gvim 2>/dev/null"
 alias mvim="gvim 2>/dev/null"
 
-# caps2ctrl(){
-#   setxkbmap -device $1 -layout us -option ctrl:nocaps
-# }
-
+# Tommy's natrual scrolling
+  device=$(xinput list --id-only 'Razer  Razer Abyssus')
+  xinput set-prop $device 280 -1, -1, -1
 
 # Ata & Ardan's keyboard aliases
   alias x='xinput --list'
