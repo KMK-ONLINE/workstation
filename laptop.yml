@@ -36,6 +36,9 @@
         replace: 'XKBOPTIONS="ctrl:nocaps"'
       become: true
 
+      # sudo dpkg-reconfigure keyboard-configuration
+
+
   roles:
     # tags: focus # ./focus.sh
 
@@ -70,6 +73,7 @@
       become: true
 
     - role: rdeknijf.chromedriver
+      tags: focus
       become: true
 
     - role: jpnewman.redis

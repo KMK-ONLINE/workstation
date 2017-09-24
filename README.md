@@ -40,16 +40,28 @@
 
 ### Stuff I need to fix / install
 
-- clipboard buffer?
+-python3 sudo apt-get install python3-pip
+
+thoughts on the touchpad & windows management
+https://erik.torgesta.com/2016/11/things-to-improve-ubuntu-16-04-on-dell-xps-13-9630/
 - mouse & touchpad, natural scrolling, getting the trackpad to be less fucking sensitive
 - window management?
+specktacle
+
+setup the vpn:
+sudo apt-get install --reinstall network-manager-gnome network-manager network-manager-openvpn-gnome network-manager-openvpn openvpn
+
+- clipboard buffer?
 - backups?
 
 move to gnome... the death of Unity is upon us!
 http://www.omgubuntu.co.uk/2016/05/install-gnome-3-20-ubuntu-16-04-lts
+sudo apt install --install-recommends xserver-xorg-hwe-16.04
+
+prevent gitg from updating to the new & worse version
 
 - what about using $HOME instead of home\_dir
-- mail client -- Nylas Mail?
+- mail client -- Nylas Mail? => just use the web client for now, it's good
 - synology-assistant
 
 ### :-(

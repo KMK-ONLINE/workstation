@@ -12,19 +12,20 @@
 #     - libgdbm-dev
 #     - libreadline-dev
 #     - libffi-dev
-#
+
+# TODO: add the ruby .gemrc no-ri no rdoc
+
 - name: Fetch the latest rubies
   command: ruby-install --latest
 
-#
 # `ruby-install` doesn't check if something is already installed so it
 # downloads and installs all every time, do not want that so comment out for now
-# - name: Install 2.4.0 (latest on Heroku) and 2.4.1 because that's legit
-#   command: ruby-install ruby {{item}}
-#   with_items:
-#     - 2.4.0
-#     - 2.4.1
-#
+# TODO: make this conditional by checking on your own
+- name: Install 2.4.0 (latest on Heroku) and 2.4.1 because that's legit
+  command: ruby-install ruby {{item}}
+  with_items:
+    - 2.4.0
+    - 2.4.1
 
 - name: Install the other Ruby development dependencies
   apt: name={{item}} state=present
