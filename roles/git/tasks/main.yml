@@ -4,9 +4,15 @@
     - git
   become: true
 
-- name: Download old version gitg
+- name: Install the older version gitg
   apt:
     deb: http://ftp.debian.org/debian/pool/main/g/gitg/gitg_0.2.7-3_amd64.deb
+  become: true
+
+- name: Hold that version of gitg, it's better
+  dpkg_selections:
+    name: gitg
+    selection: hold
   become: true
 
 - name: Use our .gitconfig
