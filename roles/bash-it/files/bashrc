@@ -22,8 +22,10 @@ export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 source $HOME/.secrets
 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+if [ -f  /usr/local/share/chruby/chruby.sh ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
 
 alias gitg="gitg &>/dev/null"
 alias gvim="gvim &>/dev/null"

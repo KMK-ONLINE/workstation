@@ -15,6 +15,9 @@
     - zlib1g-dev
   become: true
 
+- name: Update our .gemrc
+  copy: src=gemrc dest="{{ home_dir }}/.gemrc"
+
 - name: Fetch the latest rubies
   command: ruby-install --latest
   become: false
@@ -22,6 +25,7 @@
 - name: Check installed rubies
   command: ls {{ home_dir }}/.rubies
   register: rubies
+  ignore_errors: true
 
 - name: Install ruby 2.4.0
   command: ruby-install ruby 2.4.0
@@ -33,5 +37,3 @@
   become: false
   when: rubies.stdout.find('2.4.1') == -1
 
-- name: Update our .gemrc
-  copy: src=gemrc dest="{{ home_dir }}/.gemrc"
