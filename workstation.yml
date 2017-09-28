@@ -1,11 +1,10 @@
 - include: base.yml
 
-- name: Restore my comphy laptop environment
+- name: Some useful stuff for a workstation
   hosts: all
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
-    shared_dir: "/mnt/Shared"
 
   tasks:
     - name: Show me the home dir
@@ -14,19 +13,6 @@
   roles:
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh
-
-    - role: roles/flux
-    - role: roles/dnscrypt-proxy
-    - role: roles/settings-power
-    - role: roles/shortcuts-tommy
-
-    # This is just too flaky to run on it's own
-    # because of the automount and other issues
-    # but it is working after my /mnt/Shared is mounted
-    # - role: roles/dropbox
-
-    - role: roles/spotify
-      become: true
 
     - role: roles/ruby
       become: true
