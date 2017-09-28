@@ -11,8 +11,8 @@
     - name: Install base applications.
       apt: pkg={{item}} update_cache=yes state=latest
       with_items:
-        - adobe-flashplugin
         - glances
+      become: true
 
   roles:
     # - debug: msg={{ variable }}
@@ -23,7 +23,6 @@
     - role: roles/copyq
     - role: roles/bash-it
     - role: roles/shortcuts
-    - role: roles/dnscrypt-proxy
     - role: roles/settings-input
     - role: roles/settings-display
 
