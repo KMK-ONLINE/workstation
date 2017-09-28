@@ -2,17 +2,7 @@
 
 ## Pre-Tasks
 
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get install openssh-server net-tools ansible git 
-
-### setup ssh
-
-    mkdir ~/.ssh
-    cd ~/.ssh
-    ssh-keygen
-    cat id_rsa.pub >> authorized_keys
-    # add key to github
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/KMK-Online/workstation/master/install.sh)"
 
 ### Enable sudo password less:
 
@@ -29,14 +19,10 @@
     # uncomment this line:
     AuthorizedKeysFile %h/.ssh/authorized_keys
 
-### Run this provisioning repo
+### You're ready to provisioning with
 
-    mkdir ~/Workspace
-    cd ~/Workspace
-    git clone git@github.com:KMK-ONLINE/workstation.git
-    sudo chown `whoami`:`whoami` -R /etc/ansible/
-    ansible-galaxy install -r workstation/requirements.yml
-    ansible-playbook -i 127.0.0.1, workstation/laptop.yml -vvvv
+    ansible-galaxy install -r ~/Workspace/workstation/requirements.yml
+    ansible-playbook -i 127.0.0.1, ~/Workspace/workstation/workstation.yml -vvvv
 
 ### Stuff I need to fix / install
 
@@ -68,7 +54,7 @@ prevent gitg from updating to the new & worse version
 
 - look into linux laptop power management tools, had some article here idk where it went...
 - evernote
-- slow wifi?!  
+- slow wifi?!
 
 `$ sudo vi /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf`
 powersave 3 => 2?
