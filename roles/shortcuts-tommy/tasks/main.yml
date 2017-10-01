@@ -7,19 +7,23 @@
   copy:
     src: Evernote.desktop
     dest: "{{ home_dir }}/Desktop/Evernote.desktop"
+    force: no
 
 - name: Add Evernote icon
   copy:
     src: Evernote.png
     dest: "{{ home_dir }}/.icons/Evernote.png"
+    force: no
 
 - name: Add LastPass Link
   copy:
     src: LastPass.desktop
     dest: "{{ home_dir }}/Desktop/LastPass.desktop"
+    force: no
 
 - name: Add LastPass icon
   copy:
     src: LastPass.png
     dest: "{{ home_dir }}/.icons/LastPass.png"
+    force: no
 

@@ -9,3 +9,7 @@
     name: copyq
     state: present
   become: true
+
+- name: Create the custom keyboard shortcut
+  shell: "\t\tGo to: All Settings > Keyboard > Shortcuts and add name: CopyQ, command: copyq toggle, launcher: Shift+Ctrl+V"
+
