@@ -13,7 +13,7 @@
 
   roles:
     # - debug: msg={{ variable }}
-    # tags: focus # ./focus.sh
+    # tags: focus # ./focus.sh tommy.yml
 
     - role: roles/flux
     - role: roles/dnscrypt-proxy

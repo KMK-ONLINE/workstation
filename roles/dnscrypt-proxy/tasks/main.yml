@@ -1,6 +1,6 @@
 - name: Use the Indonesian dnscrypt server (Thanks d0wn :-)
   replace:
     path: /etc/default/dnscrypt-proxy
-    regexp: 'RESOLVER_NAME=d0wn-\w{2}-ns\d'
-    replace: 'RESOLVER_NAME=d0wn-id-ns1'
+    regexp: 'RESOLVER_NAME=.*'
+    replace: 'RESOLVER_NAME=bikinhappy-sg'
   become: true
