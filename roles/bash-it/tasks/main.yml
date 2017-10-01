@@ -1,13 +1,16 @@
 - name: Checkout Bash it
-  git: repo=git://github.com/bash-it/bash-it.git
-       dest="{{ home_dir }}/.bash_it"
-       depth=1
-       update=true
-       version=master
-       accept_hostkey=true
+  git:
+    repo: git://github.com/bash-it/bash-it.git
+    dest: "{{ home_dir }}/.bash_it"
+    depth: 1
+    update: true
+    version: master
+    accept_hostkey: true
 
 - name: Install bash-it
   shell: "{{ home_dir }}/.bash_it/install.sh --silent"
 
 - name: Update with our .bashrc
-  copy: src=bashrc dest="{{ home_dir }}/.bashrc"
+  copy:
+    src: bashrc
+    dest: "{{ home_dir }}/.bashrc"

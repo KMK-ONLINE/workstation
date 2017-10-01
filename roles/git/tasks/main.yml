@@ -1,7 +1,8 @@
 - name: Install git
-  apt: name={{item}} state=present update_cache=yes
-  with_items:
-    - git
+  apt:
+    name: git
+    state: present
+    update_cache: yes
   become: true
 
 - name: Install the older version gitg
@@ -16,10 +17,16 @@
   become: true
 
 - name: Use our .gitconfig
-  copy: src=gitconfig dest="{{ home_dir }}/.gitconfig"
+  copy:
+    src: gitconfig
+    dest: "{{ home_dir }}/.gitconfig"
+    force: no
 
 - name: Use our .gitignore_global
-  copy: src=gitignore_global dest="{{ home_dir }}/.gitignore_global"
+  copy:
+    src: gitignore_global
+    dest: "{{ home_dir }}/.gitignore_global"
+    force: no
 
 # Move this to square's git pair script?
 - name: Install `git pair` command via gem
@@ -29,4 +36,7 @@
   become: true
 
 - name: Use our .pairs file
-  copy: src=pairs dest="{{ home_dir }}/.pairs"
+  copy:
+    src: pairs
+    dest: "{{ home_dir }}/.pairs"
+    force: no

@@ -1,5 +1,7 @@
 - name: Remove unnecessary examples link
-  file: path="{{ home_dir }}/examples.desktop" state=absent
+  file:
+    path: "{{ home_dir }}/examples.desktop"
+    state: absent
 
 # This isn't working, even with `dbus-launch` and sudo, no go.
 # must google more.

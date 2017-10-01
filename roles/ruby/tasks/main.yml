@@ -1,6 +1,9 @@
 - name: Install the other Ruby development dependencies, mostly used by gems
   # https://github.com/postmodern/chruby/wiki/Ruby
-  apt: name={{item}} state=present update_cache=yes
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: yes
   with_items:
     - bison
     - build-essential
@@ -16,7 +19,9 @@
   become: true
 
 - name: Update our .gemrc
-  copy: src=gemrc dest="{{ home_dir }}/.gemrc"
+  copy:
+    src: gemrc
+    dest: "{{ home_dir }}/.gemrc"
 
 - name: Fetch the latest rubies
   command: ruby-install --latest

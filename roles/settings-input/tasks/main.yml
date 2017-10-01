@@ -9,7 +9,9 @@
 # sudo dpkg-reconfigure keyboard-configuration
 
 - name: Update with our .inputrc
-  copy: src=inputrc dest="{{ home_dir }}/.inputrc"
+  copy:
+    src: inputrc
+    dest: "{{ home_dir }}/.inputrc"
 
 
 

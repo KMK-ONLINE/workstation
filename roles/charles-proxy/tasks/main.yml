@@ -7,9 +7,14 @@
   shell: wget --quiet -O - https://www.charlesproxy.com/packages/apt/PublicKey | sudo apt-key add -
 
 - name: Adds repo Charles Proxy
-  apt_repository: repo="" state=present
+  apt_repository:
+    repo: ""
+    state: present
   become: true
 
 - name: Install Charles Proxy
-  apt: name=charles-proxy state=present update_cache=yes
+  apt:
+    name: charles-proxy
+    state: present
+    update_cache: yes
   become: true

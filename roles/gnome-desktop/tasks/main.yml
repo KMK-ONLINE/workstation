@@ -2,7 +2,10 @@
 # Ships with Ubuntu 18.04, ready for primetime at KMK!?
 #
 - name: Gnome desktop
-  apt: name={{item}} state=present update_cache=yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
   with_items:
     - gnome-shell
     - ubuntu-gnome-desktop

@@ -1,15 +1,25 @@
 - name: Create .icon dir
-  file: path="{{ home_dir }}/.icons" state=directory
+  file:
+    path: "{{ home_dir }}/.icons"
+    state: directory
 
 - name: Add Evernote link
-  copy: src=Evernote.desktop dest="{{ home_dir }}/Desktop/Evernote.desktop"
+  copy:
+    src: Evernote.desktop
+    dest: "{{ home_dir }}/Desktop/Evernote.desktop"
 
 - name: Add Evernote icon
-  copy: src=Evernote.png dest="{{ home_dir }}/.icons/Evernote.png"
+  copy:
+    src: Evernote.png
+    dest: "{{ home_dir }}/.icons/Evernote.png"
 
 - name: Add LastPass Link
-  copy: src=LastPass.desktop dest="{{ home_dir }}/Desktop/LastPass.desktop"
+  copy:
+    src: LastPass.desktop
+    dest: "{{ home_dir }}/Desktop/LastPass.desktop"
 
 - name: Add LastPass icon
-  copy: src=LastPass.png dest="{{ home_dir }}/.icons/LastPass.png"
+  copy:
+    src: LastPass.png
+    dest: "{{ home_dir }}/.icons/LastPass.png"
 

@@ -1,7 +1,11 @@
 - name: Adds the copyq repo
-  apt_repository: repo="ppa:hluk/copyq" state=present
+  apt_repository:
+    repo: ppa:hluk/copyq
+    state: present
   become: true
 
 - name: Install copyq
-  apt: name=copyq state=present
+  apt:
+    name: copyq
+    state: present
   become: true
