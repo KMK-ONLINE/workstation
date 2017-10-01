@@ -1,0 +1,20 @@
+- name: Adds Touchpad Indicator repo
+  apt_repository:
+    repo: ppa:atareao/atareao
+    state: present
+  become: true
+
+- name: Install Touchpad Indicator
+  apt:
+    name: touchpad-indicator
+    state: present
+    update_cache: yes
+  become: true
+
+- name: Enable PalmDetect 
+  copy:
+    src: synaptics.conf
+    dest: /usr/share/X11/xorg.conf.d/50-synaptics.conf
+    backup: yes
+  become: true
+

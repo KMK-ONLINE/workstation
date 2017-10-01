@@ -16,6 +16,7 @@
     # tags: focus # ./focus.sh tommy.yml
 
     - role: roles/flux
+    - role: roles/touchpad
     - role: roles/dnscrypt-proxy
     - role: roles/settings-power
     - role: roles/shortcuts-tommy
