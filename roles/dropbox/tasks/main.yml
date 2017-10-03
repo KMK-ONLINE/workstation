@@ -17,13 +17,15 @@
   ignore_errors: true
 
 - name: Copy everything from the Dropbox folders to the real folders
+  # note the trailling slash on the src so only contents are copied, not the dir itself
   shell: "rsync -avh {{ item.src }} {{ item.dest }}"
   register: rsync_cmd
   with_items:
-    - { src: "{{ home_dir }}/Dropbox/Desktop",     dest: "{{ home_dir }}/Desktop" }
-    - { src: "{{ home_dir }}/Dropbox/Documents",   dest: "{{ shared_dir }}/Documents" }
-    - { src: "{{ home_dir }}/Dropbox/Photography", dest: "{{ home_dir }}/Pictures" }
-    - { src: "{{ home_dir }}/Dropbox/Pictures",    dest: "{{ shared_dir }}/Pictures" }
+    - { src: "{{ home_dir }}/Dropbox/Desktop/",     dest: "{{ home_dir }}/Desktop"     }
+    - { src: "{{ home_dir }}/Dropbox/Documents/",   dest: "{{ shared_dir }}/Documents" }
+    - { src: "{{ home_dir }}/Dropbox/Photography/", dest: "{{ home_dir }}/Pictures"    }
+    - { src: "{{ home_dir }}/Dropbox/Pictures/",    dest: "{{ shared_dir }}/Pictures"  }
+    - { src: "{{ home_dir }}/Dropbox/Downloads/",   dest: "{{ home_dir }}/Downloads"   }
   become: true
   ignore_errors: true
 
@@ -34,6 +36,7 @@
   with_items:
     - "{{ home_dir }}/Dropbox/Desktop"
     - "{{ home_dir }}/Dropbox/Documents"
+    - "{{ home_dir }}/Dropbox/Downloads"
     - "{{ home_dir }}/Documents"
     - "{{ home_dir }}/Dropbox/Photography"
     - "{{ home_dir }}/Dropbox/Pictures"
@@ -45,6 +48,7 @@
     state: link
   with_items:
     - { src: "{{ home_dir }}/Desktop",      dest: "{{ home_dir }}/Dropbox/Desktop" }
+    - { src: "{{ home_dir }}/Downloads",      dest: "{{ home_dir }}/Dropbox/Downloads" }
     - { src: "{{ shared_dir }}/Documents",  dest: "{{ home_dir }}/Dropbox/Documents" }
     - { src: "{{ shared_dir }}/Documents",  dest: "{{ home_dir }}/Documents" }
     - { src: "{{ home_dir }}/Pictures",     dest: "{{ home_dir }}/Dropbox/Photography" }
