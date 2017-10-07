@@ -1,7 +1,3 @@
-[user]
-  name = Someone who forgot to `git pair`
-  email = dev.it@kmkonline.co.id
-
 [core]
   excludesfile = ~/.gitignore_global
 
@@ -10,6 +6,9 @@
 
 [push]
   default = current
+
+[help]
+  autoCorrect = 5
 
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
