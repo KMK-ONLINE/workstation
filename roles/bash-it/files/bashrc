@@ -20,7 +20,6 @@ export SCM_CHECK=true
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
-source $HOME/.secrets
 
 if [ -f  /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
