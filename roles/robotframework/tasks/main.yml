@@ -1,0 +1,25 @@
+- name: Install the robot dependencis 
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: yes
+  with_items:
+    - xvfb
+  become: true
+
+- name: Install the robot depenencies
+  pip:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - robotframework
+    - robotframework-extendedselenium2library
+    - robotframework-selenium2library
+    - robotframework-pabot
+    - robotframework-xvfb
+    - robotframework-debuglibrary
+    - robotframework-faker
+    - robotframework-httplibrary
+    - robotframework-appiumlibrary
+  become: true
+

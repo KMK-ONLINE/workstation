@@ -1,8 +1,11 @@
-- name: Base tools for a development workstation
+- include: base.yml
+
+- name: Some useful stuff for a TE workstation
   hosts: all
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
+    chromedriver_version: 2.33
 
   tasks:
     - name: Show me the home dir
@@ -20,16 +23,15 @@
 
   roles:
     # - debug: msg={{ variable }}
-    # tags: focus # ./focus.sh base.yml
+    # tags: focus # ./focus.sh test-engineering.yml
 
-    - role: roles/vim
-    - role: roles/git
-    - role: roles/copyq
-    - role: roles/bash-it
-    - role: roles/shortcuts
-    - role: roles/settings-input
-    - role: roles/settings-display
+    # terminator
 
-    - role: cmprescott.chrome
+    - role: rdeknijf.chromedriver
       become: true
 
+    - role: roles/atom
+      become: true
+
+    - role: roles/robotframework
+      become: true
