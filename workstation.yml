@@ -43,3 +43,4 @@
     - role: FGtatsuro.vagrant
       become: true
 
+    - role: roles/yubikey

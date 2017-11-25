@@ -15,6 +15,7 @@
         state: present
       with_items:
         - glances
+        - indicator-multiload
         - compizconfig-settings-manager
       become: true
 

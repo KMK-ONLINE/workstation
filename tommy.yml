@@ -15,11 +15,11 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh tommy.yml
 
-    - role: roles/flux
-    - role: roles/touchpad
     - role: roles/dnscrypt-proxy
+    - role: roles/flux
     - role: roles/settings-power
     - role: roles/shortcuts-tommy
+    - role: roles/touchpad
 
     # This is just too flaky to run on it's own
     # because of the automount and other issues

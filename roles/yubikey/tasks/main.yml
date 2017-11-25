@@ -1,0 +1,15 @@
+- name: Adds Yubico repo
+  apt_repository:
+    repo: ppa:yubico/stable
+    state: present
+  become: true
+
+- name: Install Neo Manager and Ubuntu login
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - yubikey-neo-manager
+    - libpam-yubico
+  become: true
+
