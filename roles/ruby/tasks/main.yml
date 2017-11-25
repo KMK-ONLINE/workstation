@@ -23,6 +23,11 @@
     src: gemrc
     dest: "{{ home_dir }}/.gemrc"
 
+- name: Update our .irbrc
+  copy:
+    src: irbrc
+    dest: "{{ home_dir }}/.irbrc"
+
 - name: Fetch the latest rubies
   command: ruby-install --latest
   become: false
