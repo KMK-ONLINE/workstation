@@ -15,7 +15,10 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh tommy.yml
 
-    - role: roles/dnscrypt-proxy
+    # Not working, ssl issues connecting with dnscrypt.org, maybe only in Indonesia?
+    #
+    # - role: roles/dnscrypt-proxy
+
     - role: roles/flux
     - role: roles/settings-power
     - role: roles/shortcuts-tommy
@@ -23,7 +26,7 @@
 
     # This is just too flaky to run on it's own
     # because of the automount and other issues
-    # but it is working after my /mnt/Shared is mounted
+    #
     # - role: roles/dropbox
 
     - role: roles/spotify
