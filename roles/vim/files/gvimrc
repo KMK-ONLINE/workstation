@@ -43,3 +43,12 @@
 
 runtime! custom_config/*.gvim
 
+"
+" I'm sick of this airline bling... it's too complicated
+"
+" Plug 'bling/vim-airline'
+" let g:airline_powerline_fonts = 1
+
+" Let's yout track files that aren't checked in yet
+let g:CommandTFileScanner = "find"
+
