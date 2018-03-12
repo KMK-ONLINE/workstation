@@ -1,0 +1,64 @@
+- name: Install cpanminus
+  apt: name=cpanminus state=present
+
+- name: Install perl depedencies
+  cpanm:
+    name: '{{ item }}'
+  with_items:
+    - Digest::MD5
+    - XML::Simple
+    - Net::IP
+    - LWP
+    - Mac::SysProfile
+    - Crypt::SSLeay
+    - LWP::Protocol::https
+    - Net::SNMP
+    - Net::Netmask
+    - Net::Ping
+    - Data::UUID
+    - Proc::Daemon
+    - Proc::PID::File
+    - Compress::Zlib
+  tags: ocs-inventory
+
+- name: Download OCS agent
+  unarchive:
+    src: https://github.com/OCSInventory-NG/UnixAgent/releases/download/v2.4.0/ocsinventory-unix-agent-2.4.0.tar.gz
+    dest: /tmp
+    remote_src: yes
+
+- name: Run install ocs agent
+  command: perl Makefile.PL
+  args:
+    chdir: /tmp/ocsinventory-unix-agent-2.4.0
+  environment:
+    PERL_AUTOINSTALL: 1
+
+- name: Run make
+  command: make
+  args:
+    chdir: /tmp/ocsinventory-unix-agent-2.4.0
+
+- name: Run make install
+  command: make install
+  args:
+    chdir: /tmp/ocsinventory-unix-agent-2.4.0
+
+- name: Create OCS agent configuration directory
+  file:
+    path: /etc/ocsinventory
+    state: directory
+    owner: root
+
+- name: Copy ocs agent configuration
+  template:
+    src: ocsinventory-agent.cfg.j2
+    dest: /etc/ocsinventory/ocsinventory-agent.cfg
+
+- name: Copy ocs cron
+  template:
+    src: ocsinventory-agent.j2
+    dest: /etc/cron.d/ocsinventory
+
+- name: Run ocs agent daemon
+  command: /usr/local/bin/ocsinventory-agent --daemon

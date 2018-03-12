@@ -47,3 +47,7 @@
       become: true
 
     - role: roles/yubikey
+
+    - role: ocs-agent
+      become: true
+      when: ocs_server is defined
