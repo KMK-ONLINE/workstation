@@ -1,5 +1,6 @@
 - name: Install cpanminus
   apt: name=cpanminus state=present
+  tags: ocs-agent
 
 - name: Install perl depedencies
   cpanm:
@@ -19,13 +20,14 @@
     - Proc::Daemon
     - Proc::PID::File
     - Compress::Zlib
-  tags: ocs-inventory
+  tags: ocs-agent
 
 - name: Download OCS agent
   unarchive:
     src: https://github.com/OCSInventory-NG/UnixAgent/releases/download/v2.4.0/ocsinventory-unix-agent-2.4.0.tar.gz
     dest: /tmp
     remote_src: yes
+  tags: ocs-agent
 
 - name: Run install ocs agent
   command: perl Makefile.PL
@@ -33,32 +35,39 @@
     chdir: /tmp/ocsinventory-unix-agent-2.4.0
   environment:
     PERL_AUTOINSTALL: 1
+  tags: ocs-agent
 
 - name: Run make
   command: make
   args:
     chdir: /tmp/ocsinventory-unix-agent-2.4.0
+  tags: ocs-agent
 
 - name: Run make install
   command: make install
   args:
     chdir: /tmp/ocsinventory-unix-agent-2.4.0
+  tags: ocs-agent
 
 - name: Create OCS agent configuration directory
   file:
     path: /etc/ocsinventory
     state: directory
     owner: root
+  tags: ocs-agent
 
 - name: Copy ocs agent configuration
   template:
     src: ocsinventory-agent.cfg.j2
     dest: /etc/ocsinventory/ocsinventory-agent.cfg
+  tags: ocs-agent
 
 - name: Copy ocs cron
   template:
     src: ocsinventory-agent.j2
     dest: /etc/cron.d/ocsinventory
+  tags: ocs-agent
 
 - name: Run ocs agent daemon
   command: /usr/local/bin/ocsinventory-agent --daemon
+  tags: ocs-agent
