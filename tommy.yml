@@ -28,6 +28,5 @@
     #
     # - role: roles/dropbox
 
-    # - role: roles/spotify
-    #   become: true
-
+    - role: roles/spotify
+      become: true
