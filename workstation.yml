@@ -26,17 +26,17 @@
     # - role: haxorof.docker-ce
     #   become: true
 
-    # - role: ANXS.postgresql
-    #   postgresql_version: 9.6
-    #   postgresql_users:
-    #     - name: "{{ lookup('env','USER') }}"
-    #   postgresql_user_privileges:
-    #     - name: "{{ lookup('env','USER') }}"
-    #       priv: "ALL"
-    #       db: postgres
-    #       role_attr_flags: "CREATEDB"
-    #   postgresql_ext_install_dev_headers: yes
-    #   become: true
+    - role: ANXS.postgresql
+      postgresql_version: 9.6
+      postgresql_users:
+        - name: "{{ lookup('env','USER') }}"
+      postgresql_user_privileges:
+        - name: "{{ lookup('env','USER') }}"
+          priv: "ALL"
+          db: postgres
+          role_attr_flags: "CREATEDB"
+      postgresql_ext_install_dev_headers: yes
+      become: true
 
     # - role: jpnewman.redis
     #   become: true
