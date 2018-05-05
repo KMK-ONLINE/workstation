@@ -16,7 +16,6 @@
     # tags: focus # ./focus.sh tommy.yml
 
     # Not working, ssl issues connecting with dnscrypt.org, maybe only in Indonesia?
-    #
     # - role: roles/dnscrypt-proxy
 
     - role: roles/flux
@@ -29,6 +28,6 @@
     #
     # - role: roles/dropbox
 
-    - role: roles/spotify
-      become: true
+    # - role: roles/spotify
+    #   become: true
 

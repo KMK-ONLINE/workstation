@@ -20,33 +20,33 @@
     - role: rdeknijf.chromedriver
       become: true
 
-    - role: bearandgiraffe.heroku-cli
-      become: true
+    # - role: bearandgiraffe.heroku-cli
+    #   become: true
 
-    - role: haxorof.docker-ce
-      become: true
+    # - role: haxorof.docker-ce
+    #   become: true
 
-    - role: ANXS.postgresql
-      postgresql_version: 9.6
-      postgresql_users:
-        - name: "{{ lookup('env','USER') }}"
-      postgresql_user_privileges:
-        - name: "{{ lookup('env','USER') }}"
-          priv: "ALL"
-          db: postgres
-          role_attr_flags: "CREATEDB"
-      postgresql_ext_install_dev_headers: yes
-      become: true
+    # - role: ANXS.postgresql
+    #   postgresql_version: 9.6
+    #   postgresql_users:
+    #     - name: "{{ lookup('env','USER') }}"
+    #   postgresql_user_privileges:
+    #     - name: "{{ lookup('env','USER') }}"
+    #       priv: "ALL"
+    #       db: postgres
+    #       role_attr_flags: "CREATEDB"
+    #   postgresql_ext_install_dev_headers: yes
+    #   become: true
 
-    - role: jpnewman.redis
-      become: true
+    # - role: jpnewman.redis
+    #   become: true
 
     # on 17.04 this role can't find virutalbox 5.1 somehow messed up,
     # let's stick with 16.04 for now
-    - role: FGtatsuro.vagrant
-      become: true
+    # - role: FGtatsuro.vagrant
+    #  become: true
 
-    - role: roles/yubikey
+    # - role: roles/yubikey
 
     - role: ocs-agent
       become: true
