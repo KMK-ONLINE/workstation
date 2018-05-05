@@ -15,9 +15,7 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh tommy.yml
 
-    # Not working, ssl issues connecting with dnscrypt.org, maybe only in Indonesia?
-    # - role: roles/dnscrypt-proxy
-
+    - role: roles/dnscrypt-proxy
     - role: roles/flux
     - role: roles/settings-power
     - role: roles/shortcuts-tommy
