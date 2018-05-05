@@ -1,19 +1,14 @@
-# Change this to the Fat32 mount partition, ok done.
-# Now sort out it's premissions:
-# sudo mount -t vfat /dev/nvme0n1p6 /media/shared/ --options
-# rw,exec,uid=1000,gid=1000,umask=022
-
 - name: Make sure my home directory folders exist
   file:
     path: "{{ item }}"
     state: directory
     mode: 0755
+  become: false
   with_items:
     - "{{ home_dir }}/Dropbox"
     - "{{ home_dir }}/Desktop"
-    - "{{ shared_dir }}/Documents"
-    - "{{ shared_dir }}/Pictures"
     - "{{ home_dir }}/Pictures"
+    - "{{ home_dir }}/Downloads"
   ignore_errors: true
 
 - name: Copy everything from the Dropbox folders to the real folders
@@ -22,11 +17,9 @@
   register: rsync_cmd
   with_items:
     - { src: "{{ home_dir }}/Dropbox/Desktop/",     dest: "{{ home_dir }}/Desktop"     }
-    - { src: "{{ home_dir }}/Dropbox/Documents/",   dest: "{{ shared_dir }}/Documents" }
     - { src: "{{ home_dir }}/Dropbox/Photography/", dest: "{{ home_dir }}/Pictures"    }
-    - { src: "{{ home_dir }}/Dropbox/Pictures/",    dest: "{{ shared_dir }}/Pictures"  }
     - { src: "{{ home_dir }}/Dropbox/Downloads/",   dest: "{{ home_dir }}/Downloads"   }
-  become: true
+  become: false
   ignore_errors: true
 
 - name: Remove the soon-to-be symlinked folders
@@ -35,11 +28,9 @@
     state: absent
   with_items:
     - "{{ home_dir }}/Dropbox/Desktop"
-    - "{{ home_dir }}/Dropbox/Documents"
-    - "{{ home_dir }}/Dropbox/Downloads"
-    - "{{ home_dir }}/Documents"
     - "{{ home_dir }}/Dropbox/Photography"
-    - "{{ home_dir }}/Dropbox/Pictures"
+    - "{{ home_dir }}/Dropbox/Downloads"
+  become: false
 
 - name: Symlink Dropbox to the real folders
   file:
@@ -48,9 +39,7 @@
     state: link
   with_items:
     - { src: "{{ home_dir }}/Desktop",      dest: "{{ home_dir }}/Dropbox/Desktop" }
-    - { src: "{{ home_dir }}/Downloads",      dest: "{{ home_dir }}/Dropbox/Downloads" }
-    - { src: "{{ shared_dir }}/Documents",  dest: "{{ home_dir }}/Dropbox/Documents" }
-    - { src: "{{ shared_dir }}/Documents",  dest: "{{ home_dir }}/Documents" }
     - { src: "{{ home_dir }}/Pictures",     dest: "{{ home_dir }}/Dropbox/Photography" }
-    - { src: "{{ shared_dir }}/Pictures",   dest: "{{ home_dir }}/Dropbox/Pictures" }
+    - { src: "{{ home_dir }}/Downloads",    dest: "{{ home_dir }}/Dropbox/Downloads" }
+  become: false
 

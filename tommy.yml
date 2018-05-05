@@ -23,10 +23,8 @@
     - role: roles/shortcuts-tommy
     - role: roles/touchpad
 
-    # This is just too flaky to run on it's own
-    # because of the automount and other issues
-    #
-    # - role: roles/dropbox
+    - role: roles/dropbox
+      become: true
 
     - role: roles/spotify
       become: true
