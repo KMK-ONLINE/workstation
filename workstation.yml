@@ -20,8 +20,8 @@
     - role: rdeknijf.chromedriver
       become: true
 
-    # - role: bearandgiraffe.heroku-cli
-    #   become: true
+    - role: roles/heroku-cli
+      become: true
 
     # - role: haxorof.docker-ce
     #   become: true

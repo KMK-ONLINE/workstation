@@ -1,0 +1,15 @@
+- name: Add the Heroku repository signing keys to be able to verify downloaded packages
+  apt_key:
+    url: https://cli-assets.heroku.com/apt/release.key
+    state: present
+
+- name: Add Heroku repository
+  apt_repository:
+    repo: 'deb https://cli-assets.heroku.com/branches/stable/apt ./'
+    update_cache: yes
+
+- name: Install Heroku
+  apt:
+    name: heroku
+    state: latest
+    allow_unauthenticated: yes
