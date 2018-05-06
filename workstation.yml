@@ -42,10 +42,8 @@
     # - role: jpnewman.redis
     #   become: true
 
-    # on 17.04 this role can't find virutalbox 5.1 somehow messed up,
-    # let's stick with 16.04 for now
-    # - role: FGtatsuro.vagrant
-    #  become: true
+    - role: FGtatsuro.vagrant
+      become: true
 
     # - role: roles/yubikey
 
