@@ -24,9 +24,6 @@
     - role: roles/heroku-cli
       become: true
 
-    # - role: haxorof.docker-ce
-    #   become: true
-
     - role: ANXS.postgresql
       postgresql_version: 9.6
       postgresql_users:

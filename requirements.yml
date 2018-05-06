@@ -5,10 +5,7 @@
 - src: cmprescott.chrome
 - src: ferrarimarco.chruby
 - src: ferrarimarco.ruby-install
-- src: haxorof.docker-ce
-
 - src: juju4.dnscrypt-proxy
   version: master
-
 - src: rdeknijf.chromedriver
 - src: wtanaka.dropbox
