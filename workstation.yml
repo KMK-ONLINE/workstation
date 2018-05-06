@@ -42,7 +42,8 @@
     - role: FGtatsuro.vagrant
       become: true
 
-    # - role: roles/yubikey
+    - role: roles/yubikey
+      become: true
 
     - role: ocs-agent
       become: true
