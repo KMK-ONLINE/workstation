@@ -14,8 +14,9 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh workstation.yml
 
-    - role: roles/ruby
-      become: true
+    # Ubuntu 18.04 ships with 2.5.1, so no need for chruby just yet (take a long time to install anyway)
+    # - role: roles/ruby
+    #   become: true
 
     - role: rdeknijf.chromedriver
       become: true

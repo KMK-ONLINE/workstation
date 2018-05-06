@@ -37,13 +37,7 @@
   register: rubies
   ignore_errors: true
 
-- name: Install ruby 2.4.0
-  command: ruby-install ruby 2.4.0
+- name: Install ruby 2.5.1
+  command: ruby-install ruby 2.5.1
   become: false
-  when: rubies.stdout.find('2.4.0') == -1
-
-- name: Install ruby 2.4.1
-  command: ruby-install ruby 2.4.1
-  become: false
-  when: rubies.stdout.find('2.4.1') == -1
-
+  when: rubies.stdout.find('2.5.1') == -1
