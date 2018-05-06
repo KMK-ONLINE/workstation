@@ -18,6 +18,8 @@
     # - role: roles/ruby
     #   become: true
 
+    - role: roles/atom
+
     - role: rdeknijf.chromedriver
       become: true
 
