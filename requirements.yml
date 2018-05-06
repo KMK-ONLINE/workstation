@@ -6,7 +6,6 @@
 - src: ferrarimarco.chruby
 - src: ferrarimarco.ruby-install
 - src: haxorof.docker-ce
-- src: jpnewman.redis
 
 - src: juju4.dnscrypt-proxy
   version: master

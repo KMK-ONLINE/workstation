@@ -39,9 +39,6 @@
       postgresql_ext_install_dev_headers: yes
       become: true
 
-    # - role: jpnewman.redis
-    #   become: true
-
     - role: FGtatsuro.vagrant
       become: true
 
