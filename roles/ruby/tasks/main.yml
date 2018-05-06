@@ -28,6 +28,14 @@
     src: irbrc
     dest: "{{ home_dir }}/.irbrc"
 
+- name: Enable autoloading of chruby
+  shell: "source {{ home_dir }}/.bashrc && {{ item }}"
+  with_items:
+    - bash-it enable plugin chruby-auto
+  args:
+    executable: /bin/bash
+  ignore_errors: true
+
 - name: Fetch the latest rubies
   command: ruby-install --latest
   become: false
@@ -37,7 +45,7 @@
   register: rubies
   ignore_errors: true
 
-- name: Install ruby 2.5.1
-  command: ruby-install ruby 2.5.1
-  become: false
-  when: rubies.stdout.find('2.5.1') == -1
+# - name: Install ruby 2.5.1
+#   command: ruby-install ruby 2.5.1
+#   become: false
+#   when: rubies.stdout.find('2.5.1') == -1

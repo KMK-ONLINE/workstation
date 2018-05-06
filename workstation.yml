@@ -15,8 +15,8 @@
     # tags: focus # ./focus.sh workstation.yml
 
     # Ubuntu 18.04 ships with 2.5.1, so no need for chruby just yet (take a long time to install anyway)
-    # - role: roles/ruby
-    #   become: true
+    - role: roles/ruby
+      become: true
 
     - role: atom
     - role: yubikey

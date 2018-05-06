@@ -20,7 +20,6 @@
   with_items:
     - bash-it disable alias general
     - bash-it disable plugin base
-    - bash-it enable plugin chruby-auto
     - bash-it enable plugin edit-mode-vi
     - bash-it disable completion system # broken in 18.04
   args:
