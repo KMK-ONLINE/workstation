@@ -14,3 +14,15 @@
   copy:
     src: bashrc
     dest: "{{ home_dir }}/.bashrc"
+
+- name: Update aliases and plugins, try `bash-it show aliases|plugins|comletions`
+  shell: "source {{ home_dir }}/.bashrc && {{ item }}"
+  with_items:
+    - bash-it disable alias general
+    - bash-it disable plugin base
+    - bash-it enable plugin chruby-auto
+    - bash-it enable plugin edit-mode-vi
+    - bash-it disable completion system # broken in 18.04
+  args:
+    executable: /bin/bash
+

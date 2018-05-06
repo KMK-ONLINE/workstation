@@ -9,6 +9,7 @@ export BASH_IT_THEME='minimal'
 # Tommy approved themes: sexy, sirup, rainbowbrite, bakke, minimal, nwinkler
 
 # Set the global default editor, used for things like `git rebase -i`
+# might not be necessary with bash-it-plugin edit-mode-vi
 export EDITOR=vim
 export GIT_EDITOR=vim
 
@@ -19,12 +20,7 @@ unset MAILCHECK
 export SCM_CHECK=true
 
 # Load Bash It
-source $BASH_IT/bash_it.sh
-
-if [ -f  /usr/local/share/chruby/chruby.sh ]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-fi
+source "$BASH_IT"/bash_it.sh
 
 alias gitg="gitg &>/dev/null"
 alias gvim="gvim &>/dev/null"
