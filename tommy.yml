@@ -5,7 +5,6 @@
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
-    shared_dir: "/mnt/Shared"
 
   tasks:
     - name: Show me the home dir
@@ -15,14 +14,18 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh tommy.yml
 
-    - role: roles/dnscrypt-proxy
-    - role: roles/flux
-    - role: roles/settings-power
-    - role: roles/shortcuts-tommy
-    - role: roles/touchpad
+    - role: dnscrypt-proxy
+      ignore_errors: true
 
-    - role: roles/dropbox
-      become: true
+    - role: dropbox
+    - role: flux
+    - role: heroku-cli
+    - role: shortcuts-tommy
+    - role: spotify
 
-    - role: roles/spotify
-      become: true
+    - role: touchpad
+      when: laptop is defined
+
+    - role: settings-power
+      when: laptop is defined
+
