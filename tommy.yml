@@ -18,6 +18,8 @@
       ignore_errors: true
 
     - role: dropbox
+      become: true
+
     - role: flux
     - role: heroku-cli
     - role: shortcuts-tommy
