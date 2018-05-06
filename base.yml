@@ -23,13 +23,13 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh base.yml
 
-    - role: roles/vim
-    - role: roles/git
-    - role: roles/copyq
-    - role: roles/bash-it
-    - role: roles/shortcuts
-    - role: roles/settings-input
-    - role: roles/settings-display
+    - role: vim
+    - role: git
+    - role: copyq
+    - role: bash-it
+    - role: shortcuts
+    - role: settings-input
+    - role: settings-display
 
     - role: cmprescott.chrome
       become: true

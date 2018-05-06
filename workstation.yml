@@ -18,12 +18,10 @@
     # - role: roles/ruby
     #   become: true
 
-    - role: roles/atom
+    - role: atom
+    - role: yubikey
 
     - role: rdeknijf.chromedriver
-      become: true
-
-    - role: roles/heroku-cli
       become: true
 
     - role: ANXS.postgresql
@@ -39,9 +37,6 @@
       become: true
 
     - role: FGtatsuro.vagrant
-      become: true
-
-    - role: roles/yubikey
       become: true
 
     - role: ocs-agent

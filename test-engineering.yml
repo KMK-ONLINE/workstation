@@ -27,11 +27,8 @@
 
     # terminator
 
+    - role: atom
+    - role: robotframework
     - role: rdeknijf.chromedriver
       become: true
 
-    - role: roles/atom
-      become: true
-
-    - role: roles/robotframework
-      become: true

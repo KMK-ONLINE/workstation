@@ -3,9 +3,11 @@
     repo: ppa:yubico/stable
     state: present
     update_cache: yes
+  become: true
 
 - name: Install Neo Manager
   apt:
     pkg: yubikey-manager-qt
     state: latest
+  become: true
 
