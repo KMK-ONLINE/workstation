@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt-get update
-sudo apt-get install openssh-server git python-pip
+sudo apt-get install openssh-server git python python-pip
 
 mkdir ~/.ssh
 ssh-keygen -q -f ~/.ssh/id_rsa -N ""
