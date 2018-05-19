@@ -22,6 +22,11 @@ export SCM_CHECK=true
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
 
+# while the `bash-it enable completion system` is still broken in 18.04
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 alias gitg="gitg &>/dev/null"
 alias gvim="gvim &>/dev/null"
 alias mvim="gvim &>/dev/null"
