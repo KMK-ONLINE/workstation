@@ -1,11 +1,12 @@
 - src: ANXS.postgresql
 - src: FGtatsuro.python-requirements
-- src: FGtatsuro.virtualbox
 - src: FGtatsuro.vagrant
+- src: FGtatsuro.virtualbox
+- src: Oefenweb.dropbox
 - src: cmprescott.chrome
 - src: ferrarimarco.chruby
 - src: ferrarimarco.ruby-install
+- src: rdeknijf.chromedriver
+
 - src: juju4.dnscrypt-proxy
   version: master
-- src: rdeknijf.chromedriver
-- src: wtanaka.dropbox
