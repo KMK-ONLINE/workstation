@@ -6,8 +6,6 @@
     state: present
   with_items:
     - git
-    - vim
-    - vim-gnome
     - ruby
     - ruby-dev
     - rake
@@ -55,6 +53,46 @@
     - { src: "{{ home_dir }}/.vim-config/.vimrc",    dest: "{{ home_dir }}/.vimrc" }
     - { src: "{{ home_dir }}/.vim-config/.gvimrc",    dest: "{{ home_dir }}/.gvimrc" }
 
+- name: Checkout vim
+  git:
+    repo: https://github.com/vim/vim.git
+    dest: "{{ home_dir }}/Workspace/vim"
+    depth: 1
+    update: yes
+    accept_hostkey: yes
+
+- name: Clean the vim build
+  command: make distclean
+  args:
+    chdir: "{{ home_dir }}/Workspace/vim/src/"
+
+- name: Configure a vim build so it supports ruby (as it did by default on 16.04)
+  command: ./configure \
+            --enable-multibyte \
+            --enable-rubyinterp=dynamic \
+            --with-ruby-command=/usr/bin/ruby \
+            --enable-cscope \
+            --enable-gui=auto \
+            --with-features=huge \
+            --with-x \
+            --enable-fontset \
+            --enable-largefile \
+            --disable-netbeans \
+            --enable-fail-if-missing
+  args:
+    chdir: "{{ home_dir }}/Workspace/vim/"
+
+- name: Build vim
+  command: make
+  args:
+    chdir: "{{ home_dir }}/Workspace/vim/src/"
+
+- name: Install vim
+  command: make install
+  become: true
+  args:
+    chdir: "{{ home_dir }}/Workspace/vim/src/"
+
 - name: Install the Vim plugins
   command: vim +PlugInstall +qall
 
@@ -62,4 +100,3 @@
   command: rake make
   args:
     chdir: "{{ home_dir }}/.vim-config/.vim/plugged/command-t/"
-

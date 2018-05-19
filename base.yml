@@ -23,8 +23,8 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh base.yml
 
-    - role: vim
     - role: git
+    - role: vim
     - role: copyq
     - role: bash-it
     - role: shortcuts
@@ -33,4 +33,3 @@
 
     - role: cmprescott.chrome
       become: true
-
