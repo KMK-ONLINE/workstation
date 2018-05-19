@@ -20,7 +20,6 @@
     - role: dropbox
       become: true
 
-    - role: flux
     - role: heroku-cli
     - role: shortcuts-tommy
     - role: spotify
