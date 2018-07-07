@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-sudo apt-get update
-sudo apt-get install openssh-server git python python-pip
+sudo apt update
+sudo apt --yes install openssh-server git python python-pip
 
-mkdir ~/.ssh
-ssh-keygen -q -f ~/.ssh/id_rsa -N ""
-cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
+mkdir -p ~/.ssh
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
+  ssh-keygen -q -f ~/.ssh/id_rsa -N ""
+fi
+
+if [ ! -f ~/.ssh/authorized_keys ] || ! grep -q "$(cat ~/.ssh/id_rsa.pub)" ~/.ssh/authorized_keys ; then
+  cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
+fi
 
 printf "\n\n"
 printf "You need to enable passwordless sudo, see:"
@@ -21,4 +26,4 @@ else
   git clone git://github.com/KMK-ONLINE/workstation.git ~/Workspace/workstation
 fi
 
-sudo pip install -U ansible
+sudo -H pip install -U ansible
