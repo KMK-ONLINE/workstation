@@ -17,6 +17,9 @@
     - role: atom
     - role: yubikey
 
+    - role: google-cloud-sdk
+      become: true
+
     - role: rdeknijf.chromedriver
       become: true
 
