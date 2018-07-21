@@ -1,4 +1,4 @@
-- include: workstation.yml
+- import_playbook: workstation.yml
 
 - name: Restore my comphy laptop environment
   hosts: all
