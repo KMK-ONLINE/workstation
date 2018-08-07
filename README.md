@@ -13,7 +13,8 @@
     # change to:
     %sudo ALL=(ALL:ALL) NOPASSWD:ALL
 
-    # Enable ssh key login
+### Enable ssh key login
+
     sudo vi /etc/ssh/sshd_config
 
     # uncomment this line:
@@ -26,6 +27,7 @@
 
 
 #### Misc ToDo:
-[ ] Workstation machine locking automatically
-[ ] Check Garuda's setup Ubuntu setup script, should use workstation
+
+    [ ] Workstation machine locking automatically
+    [ ] Check Garuda's setup Ubuntu setup script, should use workstation
 _
