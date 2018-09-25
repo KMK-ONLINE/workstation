@@ -1,0 +1,21 @@
+- name: Test Engineers Workstations/Jenkins Agent
+  hosts: all
+
+  vars:
+    mas_installed_apps:
+      - { id: 497799835, name: "Xcode" }
+    homebrew_taps:
+      - homebrew/cask
+    homebrew_installed_packages:
+      - node
+      - ansible
+      - git
+      - wget
+      - bash-completion
+    homebrew_cask_apps:
+      - teamviewer
+  roles:
+    - ctrlnocaps
+    - geerlingguy.homebrew
+    - { role: appium, appium_version: '1.8.1' }
+    - geerlingguy.mas

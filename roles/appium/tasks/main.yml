@@ -1,0 +1,5 @@
+- name: Install opium
+  npm:
+    name: appium
+    version: "{{ appium_version }}"
+    global: yes
