@@ -1,5 +1,6 @@
 - name: Test Engineers Workstations/Jenkins Agent
   hosts: all
+  remote_user: "{{ remote_user }}"
 
   vars:
     mas_installed_apps:

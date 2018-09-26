@@ -36,5 +36,6 @@ _
 ## Requirements
   If you remote provisioning macs with mac, be sure to use ansible with python 3
 
-    ansible-galaxy install -r ~/Workspace/workstation/requirements-mac.yml
-    ansible-playbook -i $REMOTE, -e target_host='all' Workspace/workstation/test-engineering-mac.yml -v --ask-become-pass
+## Code
+    ansible-galaxy install -r requirements-mac.yml
+    ansible-playbook -i $REMOTE, -e remote_user=$USER test-engineering-mac.yml -v --ask-become-pass
