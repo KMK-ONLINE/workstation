@@ -1,0 +1,20 @@
+- name: Ensure bashrc exists
+  copy:
+    content: ""
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    force: no
+    #group: "{{ user }}"
+    #owner: "{{ user }}"
+    mode: 0644
+
+- name: Ensure NVM_DIR exists
+  file:
+    path: "{{ ansible_env.HOME }}/.nvm"
+    state: directory
+    #owner: "{{ user }}"
+    #group: "{{ user }}"
+    mode: 0775
+
+- name: Install nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ version }}/install.sh | sh

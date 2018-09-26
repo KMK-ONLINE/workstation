@@ -1,0 +1,4 @@
+- name: Install node and set version
+  shell: >
+    /bin/bash -c "source ~/.nvm/nvm.sh && nvm install --lts && nvm alias default lts/*"
+    creates={{ ansible_env.HOME }}/.nvm/alias

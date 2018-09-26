@@ -2,20 +2,30 @@
   hosts: all
   remote_user: "{{ remote_user }}"
 
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
+
   vars:
+    user: "{{ remote_user }}"
     mas_installed_apps:
       - { id: 497799835, name: "Xcode" }
     homebrew_taps:
       - homebrew/cask
     homebrew_installed_packages:
-      - node
       - ansible
       - git
       - wget
       - bash-completion
+      - zlib
+    homebrew_uninstalled_packages:
+      - node
+      - nvm
     homebrew_cask_apps:
       - teamviewer
+
   roles:
     - geerlingguy.homebrew
-    - { role: appium, appium_version: '1.8.1' }
+    - { role: nvm, version: 'v0.33.11' }
+    - node
+    - { role: appium, version: '1.8.1' }
     - geerlingguy.mas

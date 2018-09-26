@@ -1,5 +1,2 @@
-- name: Install opium
-  npm:
-    name: appium
-    version: "{{ appium_version }}"
-    global: yes
+- name: Install appium
+  shell: npm install --no-package-lock -g appium@{{ version }}
