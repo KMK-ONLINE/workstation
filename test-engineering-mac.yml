@@ -12,10 +12,13 @@
     homebrew_taps:
       - homebrew/cask
     homebrew_installed_packages:
+      - ssh-copy-id
       - ansible
       - git
       - wget
       - bash-completion
+      - { name: python@2, install_options: "--with-tcl-tk" }
+      - { name: python@3, install_options: "--with-tcl-tk" }
       - zlib
     homebrew_uninstalled_packages:
       - node
@@ -37,4 +40,7 @@
         path: "{{ ansible_env.HOME }}/Workspace"
         state: directory
         mode: 0775
+
+    - name: Install virtualenv for python@2
+      shell: pip install virtualenv
 
