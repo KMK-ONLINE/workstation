@@ -29,3 +29,12 @@
     - node
     - { role: appium, version: '1.8.1' }
     - geerlingguy.mas
+
+
+  tasks:
+    - name: Ensure Workspace exists
+      file:
+        path: "{{ ansible_env.HOME }}/Workspace"
+        state: directory
+        mode: 0775
+
