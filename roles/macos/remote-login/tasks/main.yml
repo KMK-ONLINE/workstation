@@ -1,0 +1,7 @@
+- name: Turn on remote login
+  shell: systemsetup -setremotelogin on
+  become: yes
+
+- name: Add current user into access_ssh group
+  shell: dseditgroup -o edit -a {{ user }}  -T group com.apple.access_ssh
+  become: yes
