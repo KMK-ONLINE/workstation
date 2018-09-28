@@ -1,0 +1,11 @@
+- name: Access setup
+  shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -specifiedUsers
+  become: yes
+
+- name: Grant access
+  shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users {{ user }} -access -on -privs -all
+  become: yes
+
+- name: Restart agent
+  shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -restart -agent
+  become: yes
