@@ -1,0 +1,17 @@
+- name: Deactivating ARD agent
+  shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
+  become: yes
+
+- name: Removing default AllLocalUsers access
+  shell: defaults write /Library/Preferences/com.apple.RemoteManagement ARD_AllLocalUsers -bool FALSE
+  become: yes
+
+- name: Removing naprivs key from local users 
+  shell: |
+      RemoteManagementUsers=$(dscl . list /Users naprivs | awk '{print $1}')
+      for EnabledUser in $RemoteManagementUsers; do
+        dscl . delete /Users/$EnabledUser naprivs
+      done
+  args:
+    executable: /bin/bash
+  become: yes
