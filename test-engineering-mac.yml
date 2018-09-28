@@ -31,7 +31,9 @@
     - { role: nvm, version: 'v0.33.11' }
     - node
     - { role: appium, version: '1.8.1' }
-    - geerlingguy.mas
+    # geerlingguy.mas
+    - { role: macos/remote-login, user: "{{ remote_user }}" }
+    - { role: macos/remote-management-add, user: "{{ remote_user }}" }
 
 
   tasks:
@@ -43,4 +45,3 @@
 
     - name: Install virtualenv for python@2
       shell: pip install virtualenv
-
