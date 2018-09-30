@@ -8,9 +8,6 @@
     chromedriver_version: 2.33
 
   tasks:
-    - name: Show me the home dir
-      shell: echo {{ home_dir }}
-
     - name: Install base applications.
       apt:
         pkg: "{{ item }}"
@@ -18,17 +15,32 @@
         state: present
       with_items:
         - glances
-        - compizconfig-settings-manager
       become: true
+
+    - name: Add Android SDK business to the bashrc
+      blockinfile:
+        path: "{{ home_dir }}/.bashrc"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK - Android"
+        content: |
+          export ANDROID_HOME=/opt/android-sdk-linux
+          export ANDROID_SDK=$ANDROID_HOME
+          PATH=$PATH:$ANDROID_HOME/build-tools
+          PATH=$PATH:$ANDROID_HOME/platform-tools
+          PATH=$PATH:$ANDROID_HOME/tools
+          PATH=$PATH:$ANDROID_HOME/tools/bin
+          export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+          export PATH=$JAVA_HOME/bin:$PATH
 
   roles:
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh test-engineering.yml
 
-    # terminator
+    - role: nickpack.android_sdk
+      become: true
 
-    - role: atom
+    - role: gantsign.intellij
     - role: robotframework
+
     - role: rdeknijf.chromedriver
       become: true
 
