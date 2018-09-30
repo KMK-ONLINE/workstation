@@ -1,4 +1,6 @@
-# Moving from OSX to Ubuntu for realzies
+# Moving from OSX to Ubuntu 18.04 for realzies
+
+We have merged Ubuntu 18.04 specific changes into master, if you're provisioning Ubuntu 16.04, checkout the branch `ubuntu-16.04`
 
 ## Pre-Tasks
 
