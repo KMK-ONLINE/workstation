@@ -2,14 +2,12 @@
   apt_repository:
     repo: ppa:yubico/stable
     state: present
+    update_cache: yes
   become: true
 
-- name: Install Neo Manager and Ubuntu login
+- name: Install Neo Manager
   apt:
-    pkg: "{{ item }}"
-    state: present
-  with_items:
-    - yubikey-neo-manager
-    - libpam-yubico
+    pkg: yubikey-manager-qt
+    state: latest
   become: true
 

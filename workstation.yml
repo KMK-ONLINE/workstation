@@ -1,4 +1,4 @@
-- include: base.yml
+- import_playbook: base.yml
 
 - name: Some useful stuff for a workstation
   hosts: all
@@ -14,16 +14,13 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh workstation.yml
 
-    - role: roles/ruby
+    - role: atom
+    - role: yubikey
+
+    - role: google-cloud-sdk
       become: true
 
     - role: rdeknijf.chromedriver
-      become: true
-
-    - role: bearandgiraffe.heroku-cli
-      become: true
-
-    - role: haxorof.docker-ce
       become: true
 
     - role: ANXS.postgresql
@@ -38,15 +35,8 @@
       postgresql_ext_install_dev_headers: yes
       become: true
 
-    - role: jpnewman.redis
-      become: true
-
-    # on 17.04 this role can't find virutalbox 5.1 somehow messed up,
-    # let's stick with 16.04 for now
     - role: FGtatsuro.vagrant
       become: true
-
-    - role: roles/yubikey
 
     - role: ocs-agent
       become: true

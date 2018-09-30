@@ -1,11 +1,10 @@
-- include: workstation.yml
+- import_playbook: workstation.yml
 
 - name: Restore my comphy laptop environment
   hosts: all
 
   vars:
     home_dir: "/home/{{ lookup('env','USER') }}"
-    shared_dir: "/mnt/Shared"
 
   tasks:
     - name: Show me the home dir
@@ -15,20 +14,23 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh tommy.yml
 
-    # Not working, ssl issues connecting with dnscrypt.org, maybe only in Indonesia?
-    #
-    # - role: roles/dnscrypt-proxy
+    - role: dnscrypt-proxy
+      ignore_errors: true
 
-    - role: roles/flux
-    - role: roles/settings-power
-    - role: roles/shortcuts-tommy
-    - role: roles/touchpad
-
-    # This is just too flaky to run on it's own
-    # because of the automount and other issues
-    #
-    # - role: roles/dropbox
-
-    - role: roles/spotify
+    - role: dropbox
       become: true
+
+    # Ubuntu 18.04 ships with 2.5.1, so no need for chruby just yet (take a long time to install anyway)
+    - role: roles/ruby
+      become: true
+
+    - role: heroku-cli
+    - role: shortcuts-tommy
+    - role: spotify
+
+    - role: touchpad
+      when: laptop is defined
+
+    - role: settings-power
+      when: laptop is defined
 

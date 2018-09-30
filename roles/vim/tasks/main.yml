@@ -6,11 +6,7 @@
     state: present
   with_items:
     - git
-    - vim
     - vim-gnome
-    - ruby
-    - ruby-dev
-    - rake
     - exuberant-ctags
     - silversearcher-ag
   become: true
@@ -21,7 +17,6 @@
     dest: "{{ home_dir }}/.fonts"
     depth: 1
     update: yes
-    accept_hostkey: yes
 
 - name: Install pretty fonts
   command: "{{ home_dir }}/.fonts/install.sh"
@@ -30,9 +25,8 @@
   git:
     repo: https://github.com/KMK-ONLINE/vim-config.git
     dest: "{{ home_dir }}/.vim-config"
-    depth: 1
     update: yes
-    accept_hostkey: yes
+    version: ubuntu-18.04
 
 - name: Create the Vim autoload path
   file:
@@ -57,9 +51,4 @@
 
 - name: Install the Vim plugins
   command: vim +PlugInstall +qall
-
-- name: Fix the command-t plugin
-  command: rake make
-  args:
-    chdir: "{{ home_dir }}/.vim-config/.vim/plugged/command-t/"
 

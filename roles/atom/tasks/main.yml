@@ -7,6 +7,6 @@
 - name: Install Atom Text Editor
   apt:
     name: atom
-    state: present
+    state: latest
     update_cache: yes
   become: true
