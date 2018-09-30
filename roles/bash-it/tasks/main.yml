@@ -24,3 +24,10 @@
   args:
     executable: /bin/bash
 
+- name: Install libgnome2-bin because my bashrc uses gnome-open
+  apt:
+    pkg: libgnome2-bin
+    update_cache: yes
+    state: present
+  become: true
+
