@@ -2,7 +2,7 @@
 
 **Warning**
 - We have merged Ubuntu **18.04** specific changes into master, if you're provisioning Ubuntu 16.04, checkout the branch `ubuntu-16.04`
-- We changed ansible to be installed via official ppa. If you want to run `install.sh` be sure to uninstall ansible and python-pip beforehand.
+- In `install.sh`, we changed ansible to be installed via official ppa. Be sure to uninstall ansible if you previously installed it with pip. Also, pip installed with apt will be removed by `dhellmann.python-dev`
 
 ## Pre-Tasks
 
