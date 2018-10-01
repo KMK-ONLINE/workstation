@@ -12,3 +12,6 @@
 
 - src: juju4.dnscrypt-proxy
   version: master
+
+- src: dhellmann.python-dev
+  version: master
