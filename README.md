@@ -1,6 +1,8 @@
-# Moving from OSX to Ubuntu 18.04 for realzies
+# Ubuntu
 
-We have merged Ubuntu 18.04 specific changes into master, if you're provisioning Ubuntu 16.04, checkout the branch `ubuntu-16.04`
+**Warning**
+- We have merged Ubuntu **18.04** specific changes into master, if you're provisioning Ubuntu 16.04, checkout the branch `ubuntu-16.04`
+- We changed ansible to be installed via official ppa. If you want to run `install.sh` be sure to uninstall ansible and python-pip beforehand.
 
 ## Pre-Tasks
 
@@ -41,7 +43,7 @@ If you are provisioning a laptop you will want to add:
     [ ] Check Garuda's setup Ubuntu setup script, should use workstation
 
 
-# Psych!!! We still use macs after all!!
+# Mac OS
 
 ## Requirements
     If you remote provisioning macs with mac, be sure to use ansible with python 3
