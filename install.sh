@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 sudo apt update
-sudo apt --yes install openssh-server git python python-pip
+sudo apt install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt --yes install ansible openssh-server git
 
 mkdir -p ~/.ssh
 if [ ! -f ~/.ssh/id_rsa.pub ]; then
@@ -25,5 +28,3 @@ then
 else
   git clone git://github.com/KMK-ONLINE/workstation.git ~/Workspace/workstation
 fi
-
-sudo -H pip install -U ansible
