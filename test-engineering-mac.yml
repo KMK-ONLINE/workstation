@@ -14,7 +14,10 @@
     homebrew_installed_packages:
       - ssh-copy-id
       - ansible
+      - carthage
       - git
+      - ios-webkit-debug-proxy
+      - libimobiledevice
       - wget
       - bash-completion
       - { name: python@2, install_options: "--with-tcl-tk" }
