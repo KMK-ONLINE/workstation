@@ -3,7 +3,7 @@
   become: yes
 
 - name: Grant access
-  shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users {{ user }} -access -on -privs -all
+  shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users {{ ansible_user_id }} -access -on -privs -all
   become: yes
 
 - name: Restart agent

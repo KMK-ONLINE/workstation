@@ -6,7 +6,6 @@
     PATH: /usr/local/bin:{{ ansible_env.PATH }}
 
   vars:
-    user: "{{ remote_user }}"
     mas_installed_apps:
       - { id: 497799835, name: "Xcode" }
     homebrew_taps:
@@ -34,9 +33,9 @@
     - { role: nvm, version: 'v0.33.11' }
     - node
     - { role: appium, version: '1.8.1' }
-    # geerlingguy.mas
-    - { role: macos/remote-login, user: "{{ remote_user }}" }
-    - { role: macos/remote-management-add, user: "{{ remote_user }}" }
+  #   - geerlingguy.mas
+    - macos/remote-login
+    - macos/remote-management-add
 
 
   tasks:
