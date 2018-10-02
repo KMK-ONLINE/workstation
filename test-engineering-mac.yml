@@ -10,6 +10,7 @@
       - { id: 497799835, name: "Xcode" }
     homebrew_taps:
       - homebrew/cask
+      - homebrew/cask-versions
     homebrew_installed_packages:
       - ssh-copy-id
       - ansible
@@ -27,6 +28,7 @@
       - nvm
     homebrew_cask_apps:
       - teamviewer
+      - java10
 
   roles:
     - geerlingguy.homebrew
