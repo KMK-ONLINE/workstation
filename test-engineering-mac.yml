@@ -16,6 +16,7 @@
       - ansible
       - carthage
       - git
+      - gnu-sed
       - ios-webkit-debug-proxy
       - libimobiledevice
       - wget
