@@ -47,5 +47,11 @@
         state: directory
         mode: 0775
 
+    - name: Ensure jenkins root dir exists
+      file:
+        path: "{{ ansible_env.HOME }}/Workspace/jenkins"
+        state: directory
+        mode: 0775
+
     - name: Install virtualenv for python@2
       shell: pip install virtualenv
