@@ -16,7 +16,7 @@
       - ansible
       - carthage
       - git
-      - gnu-sed
+      - { name: gnu-sed, install-options: "--with-default-names" }
       - ios-webkit-debug-proxy
       - libimobiledevice
       - wget
