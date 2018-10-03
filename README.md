@@ -53,3 +53,8 @@ If you are provisioning a laptop you will want to add:
 ## Provision from another machine
     ansible-playbook -i $REMOTE, -e remote_user=$USER test-engineering-mac.yml -v --ask-become-pass
 
+**Notes**
+- We cant automate xcode with mas-cli because of: https://github.com/mas-cli/mas/issues/164
+- Should java download keeps failing, try install it manually:
+  - `brew tap homebrew/cask-versions` if you haven't tapped
+  - `brew cask install java10
