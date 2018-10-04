@@ -36,12 +36,22 @@
     - { role: nvm, version: 'v0.33.11' }
     - node
     - { role: appium, version: '1.8.1' }
-  #   - geerlingguy.mas
+    # - geerlingguy.mas
     - macos/remote-login
     - macos/remote-management-add
 
 
   tasks:
+    - name: Speed up ssh connection
+      blockinfile:
+        path: "{{ ansible_env.HOME }}/.ssh/config"
+        create: yes
+        block: |
+          HOST *
+          CONTROLMASTER auto
+          CONTROLPATH /tmp/ssh-%r@%h:%p
+          AddressFamily inet
+
     - name: Ensure Workspace exists
       file:
         path: "{{ ansible_env.HOME }}/Workspace"
