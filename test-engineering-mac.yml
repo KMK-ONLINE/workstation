@@ -16,13 +16,13 @@
       - ansible
       - carthage
       - git
-      - { name: gnu-sed, install-options: "--with-default-names" }
+      - { name: gnu-sed, install_options: "with-default-names" }
       - ios-webkit-debug-proxy
       - libimobiledevice
       - wget
       - bash-completion
-      - { name: python@2, install_options: "--with-tcl-tk" }
-      - { name: python@3, install_options: "--with-tcl-tk" }
+      - { name: python@2, install_options: "with-tcl-tk" }
+      - { name: python@3, install_options: "with-tcl-tk" }
       - zlib
     homebrew_uninstalled_packages:
       - node
