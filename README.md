@@ -55,6 +55,7 @@ If you are provisioning a laptop you will want to add:
 
 **Notes**
 - We cant automate xcode with mas-cli because of: https://github.com/mas-cli/mas/issues/164
+- We cant automate fbsimctl because of: https://github.com/facebook/FBSimulatorControl/issues/491. 
 - Should java download keeps failing, try install it manually:
   - `brew tap homebrew/cask-versions` if you haven't tapped
   - `brew cask install java10
