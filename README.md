@@ -58,4 +58,4 @@ If you are provisioning a laptop you will want to add:
 - We cant automate fbsimctl because of: https://github.com/facebook/FBSimulatorControl/issues/491. 
 - Should java download keeps failing, try install it manually:
   - `brew tap homebrew/cask-versions` if you haven't tapped
-  - `brew cask install java10
+  - `brew cask install java10`
