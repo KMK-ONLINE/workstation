@@ -52,6 +52,7 @@
           CONTROLMASTER auto
           CONTROLPATH /tmp/ssh-%r@%h:%p
           AddressFamily inet
+          ServerAliveInterval 80
 
     - name: Ensure Workspace exists
       file:
