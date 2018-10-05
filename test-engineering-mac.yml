@@ -30,13 +30,13 @@
     homebrew_cask_apps:
       - teamviewer
       - java10
+      - fastlane
 
   roles:
     - geerlingguy.homebrew
     - { role: nvm, version: 'v0.33.11' }
     - node
     - { role: appium, version: '1.8.1' }
-    # - geerlingguy.mas
     - macos/remote-login
     - macos/remote-management-add
 
@@ -66,3 +66,8 @@
 
     - name: Install virtualenv for python@2
       shell: pip install virtualenv
+
+    - name: Install xcode-install
+      gem:
+        name: xcode-install
+        state: present
