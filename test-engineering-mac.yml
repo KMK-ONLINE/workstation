@@ -19,6 +19,7 @@
       - { name: gnu-sed, install_options: "with-default-names" }
       - ios-webkit-debug-proxy
       - libimobiledevice
+      - maven
       - wget
       - bash-completion
       - { name: python@2, install_options: "with-tcl-tk" }
