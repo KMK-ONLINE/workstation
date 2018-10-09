@@ -1,2 +1,2 @@
 - name: Install appium
-  shell: source ~/.nvm/nvm.sh && npm install --no-package-lock -g appium@{{ version }}
+  shell: /bin/bash -c  ". ~/.nvm/nvm.sh && npm install --no-package-lock -g appium@{{ version }}"
