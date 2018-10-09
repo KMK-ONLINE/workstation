@@ -37,7 +37,7 @@
   roles:
     - geerlingguy.homebrew
     - { role: nvm, version: 'v0.33.11' }
-    - node
+    - { role: node, version: '8.12.0' }
     - { role: appium, version: '1.8.1' }
     - macos/remote-login
     - macos/remote-management-add
