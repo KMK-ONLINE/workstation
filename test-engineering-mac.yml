@@ -11,12 +11,14 @@
     homebrew_taps:
       - homebrew/cask
       - homebrew/cask-versions
+      - facebook/fb
     homebrew_installed_packages:
       - ssh-copy-id
       - ansible
       - carthage
       - git
       - mg
+      - { name: fbsimctl, install_options: "HEAD" }
       - { name: gnu-sed, install_options: "with-default-names" }
       - ios-webkit-debug-proxy
       - libimobiledevice
