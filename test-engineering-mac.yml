@@ -27,6 +27,7 @@
       - bash-completion
       - { name: python@2, install_options: "with-tcl-tk" }
       - { name: python@3, install_options: "with-tcl-tk" }
+      - tcl-tk
       - zlib
     homebrew_uninstalled_packages:
       - node
