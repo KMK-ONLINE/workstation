@@ -40,7 +40,7 @@
     - geerlingguy.homebrew
     - { role: nvm, version: 'v0.33.11' }
     - { role: node, version: '8.12.0' }
-    - { role: appium, version: '1.8.1' }
+    - { role: appium, version: '1.9.1' }
     - macos/remote-login
     - macos/remote-management-add
 
