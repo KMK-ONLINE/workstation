@@ -2,6 +2,10 @@
   shell: systemsetup -setremotelogin on
   become: yes
 
+- name: Create access_ssh group
+  shell: dseditgroup -o create -q com.apple.access_ssh
+  become: yes
+
 - name: Add current user into access_ssh group
   shell: dseditgroup -o edit -a {{ ansible_user_id }}  -T group com.apple.access_ssh
   become: yes
