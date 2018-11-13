@@ -16,6 +16,7 @@
       - ssh-copy-id
       - ansible
       - carthage
+      - chromedriver
       - git
       - mg
       - { name: fbsimctl, install_options: "HEAD" }
