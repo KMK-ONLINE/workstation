@@ -16,4 +16,4 @@
     - { role: dhellmann.python-dev, python_dev_versions: [{version: "2.7"}], python_dev_install_pypy: false }
     - { role: nvm, version: 'v0.33.11' }
     - { role: node, version: '8.12.0' }
-    - { role: appium, version: '1.9.2-beta.2' }
+    - { role: appium, version: '1.10.0' }
