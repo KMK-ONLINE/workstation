@@ -1,0 +1,16 @@
+todo list
+add to workstation repo
+1. vim8 ubuntu 16.04 http://tipsonubuntu.com/2016/09/13/vim-8-0-released-install-ubuntu-16-04/
+2. zsh / oh my zsh
+3. git shortcut
+4. terminator
+5. install python3-pip
+6. pip install peru
+7. ansible
+
+sudo apt install fonts-powerline
+
+add etc hosts
+10.10.10.12 www.vidio.test vidio.test bbm.vidio.test m.vidio.test
+
+gem install pivotal_git_scripts
