@@ -1,7 +1,6 @@
 pairs:
   an: Andy Sentosa
   ap: Agung Prasetyo
-  ard: Arif Ramadhan; ardhan
   as: Djonny Steven Abenz Sim; asen
   at: Ahmad Tanwir; ata
   aw: Addhe Warman
@@ -9,11 +8,8 @@ pairs:
   cec: Cecep Mahbub
   ch: Christian Hadirahardja
   dd: Dino Dwiyaksa
-  dj: Dewi Jayanti
   es: Ericko Samudera
   ey: Enang Yusup
-  fj: Fajri Koto
-  fm: Fadhil Mandaga
   hbl: Hafiz Badrie Lubis
   hfz: Hafiz
   hm: Hofid Mashudi
@@ -21,34 +17,26 @@ pairs:
   hu: Hendra Uzia
   ira: Nurazizah
   iwn: Kurniawan
-  kak: Kunto Aji Kristianto
   mf: Ageng Mufti Syafii Hakim; mufti
   mg: Muhammad Gantino; tino
   mi: Michael Himawan
   mk: Mohan Krishnan
-  mkw: Marhadiasha Kusumawardhana
   mm: Muis Muhidin
-  nk: Nikko Khresna
-  nr: Nofriandi Ramenta
   paw: Peter Andi Wiguna
   pk: Pinto Luhur Karsanda
   ra: Ridho Adya Pangestu
   rc: Rakhmat Cahyadi
-  rds: Rindang Septyan
   rs: Robertus Suseno
   rt: Rencana Tarigan
   sa: Yap Sok Ann
   sg: Sugandi
-  sha: Septian Hari Nugroho
   si: Suprianto Pusorotrisno
   sw: Sugeng Wibowo
   tk: Tristanto Kurniawan
   tp: Tito Pandu Brahmanto
   ts: Tommy Sullivan
-  wa: Wisnu Alamsyah; wisnu
   ws: William Shallum
   yec: Yahya Eru Cakra
-  yo: Yohan
 email:
   prefix: pair
   domain: kmkonline.co.id

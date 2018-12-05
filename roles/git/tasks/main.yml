@@ -28,11 +28,8 @@
     dest: "{{ home_dir }}/.gitignore_global"
     force: no
 
-# Move this to square's git pair script?
-- name: Install `git pair` command via gem
-  gem:
-    name: pivotal_git_scripts
-    state: present
+- name: Install `git pair`
+  command: bash -lc "gem install pivotal_git_scripts"
   become: true
 
 - name: Use our .pairs file
