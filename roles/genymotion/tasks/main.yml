@@ -1,0 +1,29 @@
+- name: Create ANDROID_HOME
+  file:
+    path: "{{ ansible_env.HOME }}/android"
+    state: directory
+    mode: 0775
+
+- name: Download genymotion
+  get_url:
+    url: https://dl.genymotion.com/releases/genymotion-2.12.2/genymotion-2.12.2-linux_x64.bin
+    dest: "{{ android_home }}/genymotion-2.12.2-linux_x64.bin"
+    mode: 0755
+
+- name: execute genymotion
+  shell: echo y| {{ android_home }}/genymotion-2.12.2-linux_x64.bin
+  sudo: yes
+
+- name: setup android env variables
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    block: |
+      export ANDROID_HOME={{ android_home }}
+      export ANDROID_SDK=$ANDROID_HOME
+      PATH=$PATH:$ANDROID_HOME/build-tools
+      PATH=$PATH:$ANDROID_HOME/platform-tools
+      PATH=$PATH:$ANDROID_HOME/tools
+      export PATH
+
+- name: source bashrc
+  shell: . "{{ ansible_env.HOME }}/.bashrc"
