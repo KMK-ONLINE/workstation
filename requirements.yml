@@ -3,6 +3,7 @@
 - src: FGtatsuro.python-requirements
 - src: FGtatsuro.vagrant
 - src: FGtatsuro.virtualbox
+- src: Oefenweb.virtualbox
 - src: Oefenweb.dropbox
 - src: cmprescott.chrome
 - src: ferrarimarco.chruby
