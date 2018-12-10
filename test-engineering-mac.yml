@@ -16,7 +16,6 @@
       - ssh-copy-id
       - ansible
       - carthage
-      - chromedriver
       - git
       - mg
       - { name: fbsimctl, install_options: "HEAD" }
@@ -35,9 +34,11 @@
       - node
       - nvm
     homebrew_cask_apps:
-      - teamviewer
+      - chromedriver
       - java10
-      - fastlane
+      # - fastlane
+      # - teamviewer
+
 
   roles:
     - geerlingguy.homebrew
