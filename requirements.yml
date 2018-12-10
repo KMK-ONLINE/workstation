@@ -9,6 +9,7 @@
 - src: ferrarimarco.chruby
 - src: ferrarimarco.ruby-install
 - src: rdeknijf.chromedriver
+- src: ansiblebit.oracle-java
 - src: nickpack.android_sdk
 - src: gantsign.intellij
 
