@@ -3,17 +3,22 @@
 - name: Some useful stuff for a TE workstation
   hosts: all
 
-  vars:
-    home_dir: "/home/{{ lookup('env','USER') }}"
-    chromedriver_version: 2.33
-
   roles:
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh test-engineering.yml
 
     - role: rdeknijf.chromedriver
       become: true
-    - { role: dhellmann.python-dev, python_dev_versions: [{version: "2.7"}], python_dev_install_pypy: false }
-    - { role: nvm, version: 'v0.33.11' }
-    - { role: node, version: '8.12.0' }
-    - { role: appium, version: '1.10.0' }
+
+    - role: dhellmann.python-dev
+      python_dev_versions:
+        - version: "2.7"
+        - version: "3.7"
+      python_dev_install_pypy: false
+
+    - role: nvm
+      version: 'v0.33.11'
+    - role: node
+      version: '8.12.0'
+    - role: appium
+      version: '1.10.0'
