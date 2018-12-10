@@ -46,9 +46,9 @@ If you are provisioning a laptop you will want to add:
 # Mac OS
 
 ## Requirements
-  If you remote provisioning macs with mac, be sure to use ansible with python 3
+  If you remote provisioning macs with mac, be sure to use ansible with python 3. We have geerlingguy.homebrew role, so it should brew/cask/etc installation in macs.
       
-      ansible-galaxy install -r requirements-mac.yml
+      ansible-galaxy install -r requirements.yml
 
 ## Provision from another machine
     ansible-playbook -i $REMOTE, -e remote_user=$USER test-engineering-mac.yml -v --ask-become-pass

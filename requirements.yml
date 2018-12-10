@@ -1,3 +1,4 @@
+- src: geerlingguy.homebrew
 - src: ANXS.postgresql
 - src: FGtatsuro.python-requirements
 - src: FGtatsuro.vagrant
