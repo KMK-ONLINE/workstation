@@ -22,6 +22,11 @@
     - role: genymotion
       android_home: "{{ ansible_env.HOME }}/android"
 
+    - role: nickpack.android_sdk
+      vars_files:
+        - vars/te_android.yml
+      become: true
+
     - role: ansiblebit.oracle-java
       oracle_java_use_defaults: no
       oracle_java_apt_repository: 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main'
