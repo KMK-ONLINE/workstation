@@ -19,6 +19,9 @@
         - version: "3.7"
       python_dev_install_pypy: false
 
+    - role: genymotion
+      android_home: "{{ ansible_env.HOME }}/android"
+
     - role: nvm
       version: 'v0.33.11'
     - role: node

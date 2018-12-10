@@ -1,6 +1,6 @@
 - name: Create ANDROID_HOME
   file:
-    path: "{{ ansible_env.HOME }}/android"
+    path: "{{ android_home }}"
     state: directory
     mode: 0775
 
