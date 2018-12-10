@@ -35,7 +35,7 @@
       - nvm
     homebrew_cask_apps:
       - chromedriver
-      - java10
+      - java8
       # - fastlane
       # - teamviewer
 
