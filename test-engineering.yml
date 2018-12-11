@@ -7,25 +7,14 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh test-engineering.yml
 
-    - role: Oefenweb.virtualbox
-      become: true
-
     - role: rdeknijf.chromedriver
       become: true
-
     - role: dhellmann.python-dev
       python_dev_versions:
         - version: "2.7"
         - version: "3.7"
       python_dev_install_pypy: false
 
-    - role: genymotion
-      android_home: "{{ ansible_env.HOME }}/android"
-
-    - role: nickpack.android_sdk
-      vars_files:
-        - vars/te_android.yml
-      become: true
 
     - role: ansiblebit.oracle-java
       oracle_java_use_defaults: no
@@ -38,6 +27,14 @@
       oracle_java_license_version: "shared/accepted-oracle-license-v1-1"
       oracle_java_set_as_default: no
       oracle_java_state: present
+    - role: Oefenweb.virtualbox
+      become: true
+    - role: genymotion
+      android_home: "{{ ansible_env.HOME }}/android"
+    - role: nickpack.android_sdk
+      vars_files:
+        - vars/android_sdk_te.yml
+      become: true
 
     - role: nvm
       version: 'v0.33.11'
