@@ -1,12 +1,16 @@
 - import_playbook: base.yml
 
+
 - name: Some useful stuff for a TE workstation
   hosts: all
+  remote_user: ubuntu
+
 
   roles:
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh test-engineering.yml
 
+    - role: teamviewer
     - role: rdeknijf.chromedriver
       become: true
     - role: dhellmann.python-dev
@@ -41,3 +45,30 @@
       version: '8.12.0'
     - role: appium
       version: '1.10.0'
+
+  tasks:
+    - name: Speed up ssh connection
+      blockinfile:
+        path: "{{ ansible_env.HOME }}/.ssh/config"
+        create: yes
+        block: |
+          HOST *
+          CONTROLMASTER auto
+          CONTROLPATH /tmp/ssh-%r@%h:%p
+          AddressFamily inet
+          ServerAliveInterval 80
+
+    - name: Ensure Workspace exists
+      file:
+        path: "{{ ansible_env.HOME }}/Workspace"
+        state: directory
+        mode: 0775
+
+    - name: Ensure jenkins root dir exists
+      file:
+        path: "{{ ansible_env.HOME }}/Workspace/jenkins"
+        state: directory
+        mode: 0775
+
+    - name: Install virtualenv for python@2
+      shell: pip2 install virtualenv
