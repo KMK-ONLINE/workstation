@@ -6,12 +6,12 @@
 
 - name: Download genymotion
   get_url:
-    url: https://dl.genymotion.com/releases/genymotion-2.12.2/genymotion-2.12.2-linux_x64.bin
-    dest: "{{ android_home }}/genymotion-2.12.2-linux_x64.bin"
+    url: https://dl.genymotion.com/releases/genymotion-{{ version }}/genymotion-{{ version }}-linux_x64.bin
+    dest: "{{ download_location }}/genymotion-{{ version }}-linux_x64.bin"
     mode: 0755
 
 - name: execute genymotion
-  shell: echo y| {{ android_home }}/genymotion-2.12.2-linux_x64.bin
+  shell: echo y| {{ download_location }}/genymotion-{{ version }}-linux_x64.bin -d {{ install_location }}
   sudo: yes
 
 - name: setup android env variables

@@ -33,7 +33,11 @@
     - role: Oefenweb.virtualbox
       become: true
     - role: genymotion
+      version: "3.0.0"
       android_home: "{{ ansible_env.HOME }}/android"
+      download_location: "{{ ansible_env.HOME }}"
+      install_location: "/opt/"
+
     - role: nickpack.android_sdk
       vars_files:
         - vars/android_sdk_te.yml
