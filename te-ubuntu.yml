@@ -10,7 +10,6 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh test-engineering.yml
 
-    - role: teamviewer
     - role: rdeknijf.chromedriver
       become: true
     - role: dhellmann.python-dev
