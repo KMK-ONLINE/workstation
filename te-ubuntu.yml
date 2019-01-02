@@ -34,7 +34,7 @@
       become: true
     - role: genymotion
       version: "3.0.0"
-      android_home: "{{ ansible_env.HOME }}/android"
+      android_home: "/opt/android-sdk-linux"
       download_location: "{{ ansible_env.HOME }}"
       install_location: "/opt/"
 

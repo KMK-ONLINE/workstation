@@ -3,6 +3,7 @@
     path: "{{ android_home }}"
     state: directory
     mode: 0775
+  become: true
 
 - name: Download genymotion
   get_url:
@@ -12,7 +13,7 @@
 
 - name: execute genymotion
   shell: echo y| {{ download_location }}/genymotion-{{ version }}-linux_x64.bin -d {{ install_location }}
-  sudo: yes
+  become: true
 
 - name: setup android env variables
   blockinfile:
