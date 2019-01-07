@@ -27,7 +27,6 @@
     - role: git
     - role: vim
     - role: copyq
-    - role: bash-it
     - role: shortcuts
     - role: settings-input
     - role: settings-display
