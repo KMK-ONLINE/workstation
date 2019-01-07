@@ -1,4 +1,4 @@
 - name: Install node and set version
   shell: >
     /bin/bash -c ". ~/.nvm/nvm.sh && nvm install {{ version }} && nvm alias default {{ version }}"
-    creates={{ ansible_env.HOME }}/.nvm/alias
+
