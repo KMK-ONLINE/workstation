@@ -61,6 +61,17 @@
       version: '1.10.0'
 
   tasks:
+    - name: Install packages required for TE nodes
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+        - python-tk
+        - build-essential
+        - libglu1
+        - firefox
+        - htop
+        - xvfb
+      become: yes
+
     - name: Speed up ssh connection
       blockinfile:
         path: "{{ ansible_env.HOME }}/.ssh/config"
