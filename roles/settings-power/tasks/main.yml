@@ -2,12 +2,9 @@
 
 - name: Install power tools
   apt:
-    pkg: "{{ item }}"
+    pkg: ['powertop', 'pm-utils']
     update_cache: yes
     state: present
-  with_items:
-    - powertop
-    - pm-utils
   become: true
 
 - name: Turn on power saving

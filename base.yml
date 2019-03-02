@@ -10,14 +10,9 @@
 
     - name: Install base applications.
       apt:
-        pkg: "{{ item }}"
+        pkg: ['glances', 'htop', 'indicator-multiload', 'compizconfig-settings-manager']
         update_cache: yes
         state: present
-      with_items:
-        - glances
-        - htop
-        - indicator-multiload
-        - compizconfig-settings-manager
       become: true
 
   roles:

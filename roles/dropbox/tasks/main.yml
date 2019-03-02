@@ -5,10 +5,11 @@
     mode: 0755
   become: false
   with_items:
-    - "{{ home_dir }}/Dropbox"
     - "{{ home_dir }}/Desktop"
-    - "{{ home_dir }}/Pictures"
+    - "{{ home_dir }}/Documents"
     - "{{ home_dir }}/Downloads"
+    - "{{ home_dir }}/Dropbox"
+    - "{{ home_dir }}/Pictures"
   ignore_errors: true
 
 - name: Copy everything from the Dropbox folders to the real folders
@@ -17,8 +18,9 @@
   register: rsync_cmd
   with_items:
     - { src: "{{ home_dir }}/Dropbox/Desktop/",     dest: "{{ home_dir }}/Desktop"     }
-    - { src: "{{ home_dir }}/Dropbox/Photography/", dest: "{{ home_dir }}/Pictures"    }
+    - { src: "{{ home_dir }}/Dropbox/Documents/",   dest: "{{ home_dir }}/Documents"   }
     - { src: "{{ home_dir }}/Dropbox/Downloads/",   dest: "{{ home_dir }}/Downloads"   }
+    - { src: "{{ home_dir }}/Dropbox/Photography/", dest: "{{ home_dir }}/Pictures"    }
   become: false
   ignore_errors: true
 
@@ -28,8 +30,9 @@
     state: absent
   with_items:
     - "{{ home_dir }}/Dropbox/Desktop"
-    - "{{ home_dir }}/Dropbox/Photography"
+    - "{{ home_dir }}/Dropbox/Documents"
     - "{{ home_dir }}/Dropbox/Downloads"
+    - "{{ home_dir }}/Dropbox/Photography"
   become: false
 
 - name: Symlink Dropbox to the real folders
@@ -39,7 +42,8 @@
     state: link
   with_items:
     - { src: "{{ home_dir }}/Desktop",      dest: "{{ home_dir }}/Dropbox/Desktop" }
-    - { src: "{{ home_dir }}/Pictures",     dest: "{{ home_dir }}/Dropbox/Photography" }
+    - { src: "{{ home_dir }}/Documents",    dest: "{{ home_dir }}/Dropbox/Documents" }
     - { src: "{{ home_dir }}/Downloads",    dest: "{{ home_dir }}/Dropbox/Downloads" }
+    - { src: "{{ home_dir }}/Pictures",     dest: "{{ home_dir }}/Dropbox/Photography" }
   become: false
 

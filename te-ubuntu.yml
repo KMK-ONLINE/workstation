@@ -62,14 +62,10 @@
 
   tasks:
     - name: Install packages required for TE nodes
-      apt: name={{ item }} state=present update_cache=yes
-      with_items:
-        - python-tk
-        - build-essential
-        - libglu1
-        - firefox
-        - htop
-        - xvfb
+      apt:
+        pkg: ['python-tk', 'build-essential', 'libglu1', 'firefox', 'htop', 'xvfb']
+        state: present
+        update_cache: yes
       become: yes
 
     - name: Speed up ssh connection

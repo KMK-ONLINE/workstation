@@ -2,13 +2,8 @@
 
 - name: Install packages required by our Vim Config
   apt:
-    pkg: "{{ item }}"
+    pkg: ['git', 'vim-gnome', 'exuberant-ctags', 'silversearcher-ag']
     state: present
-  with_items:
-    - git
-    - vim-gnome
-    - exuberant-ctags
-    - silversearcher-ag
   become: true
 
 - name: Checkout pretty fonts
