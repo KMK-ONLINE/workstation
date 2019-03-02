@@ -17,9 +17,6 @@
     - role: dropbox
       become: true
 
-    - role: roles/ruby
-      become: true
-
     - role: heroku-cli
     - role: shortcuts-tommy
 

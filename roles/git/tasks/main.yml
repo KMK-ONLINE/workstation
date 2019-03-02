@@ -27,13 +27,3 @@
     src: gitignore_global
     dest: "{{ home_dir }}/.gitignore_global"
     force: no
-
-- name: Install `git pair`
-  command: bash -lc "gem install pivotal_git_scripts"
-  become: true
-
-- name: Use our .pairs file
-  copy:
-    src: pairs
-    dest: "{{ home_dir }}/.pairs"
-    force: no

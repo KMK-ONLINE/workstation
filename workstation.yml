@@ -14,12 +14,16 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh workstation.yml
 
-    - role: yubikey
+    - role: ruby
+      become: true
 
-    - role: google-cloud-sdk
+    - role: git-pair
       become: true
 
     - role: rdeknijf.chromedriver
+      become: true
+
+    - role: andrewrothstein.vagrant
       become: true
 
     - role: ANXS.postgresql
@@ -34,8 +38,10 @@
       postgresql_ext_install_dev_headers: yes
       become: true
 
-    - role: andrewrothstein.vagrant
+    - role: google-cloud-sdk
       become: true
+
+    - role: yubikey
 
     - role: ocs-agent
       become: true
