@@ -14,19 +14,14 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh tommy.yml
 
-    - role: dnscrypt-proxy
-      ignore_errors: true
-
     - role: dropbox
       become: true
 
-    # Ubuntu 18.04 ships with 2.5.1, so no need for chruby just yet (take a long time to install anyway)
     - role: roles/ruby
       become: true
 
     - role: heroku-cli
     - role: shortcuts-tommy
-    - role: spotify
 
     - role: touchpad
       when: laptop is defined

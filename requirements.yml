@@ -1,8 +1,7 @@
 - src: geerlingguy.homebrew
 - src: ANXS.postgresql
 - src: FGtatsuro.python-requirements
-- src: FGtatsuro.vagrant
-- src: FGtatsuro.virtualbox
+- src: andrewrothstein.vagrant
 - src: Oefenweb.virtualbox
 - src: Oefenweb.dropbox
 - src: cmprescott.chrome
@@ -12,9 +11,6 @@
 - src: ansiblebit.oracle-java
 - src: nickpack.android_sdk
 - src: gantsign.intellij
-
-- src: juju4.dnscrypt-proxy
-  version: master
 
 - src: dhellmann.python-dev
   version: master

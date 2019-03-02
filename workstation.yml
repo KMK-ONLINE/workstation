@@ -14,7 +14,6 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh workstation.yml
 
-    - role: atom
     - role: yubikey
 
     - role: google-cloud-sdk
@@ -35,7 +34,7 @@
       postgresql_ext_install_dev_headers: yes
       become: true
 
-    - role: FGtatsuro.vagrant
+    - role: andrewrothstein.vagrant
       become: true
 
     - role: ocs-agent
