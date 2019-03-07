@@ -26,6 +26,9 @@
     - role: andrewrothstein.vagrant
       become: true
 
+    - role: Oefenweb.virtualbox
+      become: true
+
     - role: ANXS.postgresql
       postgresql_version: 9.6
       postgresql_users:
