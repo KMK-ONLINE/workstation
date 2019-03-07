@@ -41,13 +41,15 @@ If you are provisioning a laptop you will want to add:
 
     [ ] Workstation machine locking automatically
     [ ] Check Garuda's setup Ubuntu setup script, should use workstation
-
+    [ ] configure /etc/ansible/ansible.cfg
+        change the default callback, you can only have one 'stdout' type  enabled at a time.
+        stdout_callback = debug
 
 # Mac OS
 
 ## Requirements
   If you remote provisioning macs with mac, be sure to use ansible with python 3. We have geerlingguy.homebrew role, so it should brew/cask/etc installation in macs.
-      
+
       ansible-galaxy install -r requirements.yml
 
 ## Provision from another machine
