@@ -30,7 +30,7 @@
       become: true
 
     - role: ANXS.postgresql
-      postgresql_version: 9.6
+      postgresql_version: 10
       postgresql_users:
         - name: "{{ lookup('env','USER') }}"
       postgresql_user_privileges:
