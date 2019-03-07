@@ -10,7 +10,7 @@
 
     - name: Install base applications.
       apt:
-        pkg: ['glances', 'htop', 'indicator-multiload', 'compizconfig-settings-manager']
+        pkg: ['glances', 'htop']
         update_cache: yes
         state: present
       become: true

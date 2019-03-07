@@ -10,6 +10,13 @@
     - name: Show me the home dir
       shell: echo {{ home_dir }}
 
+    - name: Install base applications.
+      apt:
+        pkg: ['python3-dev', 'python3-pip', 'indicator-multiload', 'compizconfig-settings-manager']
+        update_cache: yes
+        state: present
+      become: true
+
   roles:
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh workstation.yml
