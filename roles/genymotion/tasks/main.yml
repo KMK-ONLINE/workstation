@@ -10,6 +10,7 @@
     url: https://dl.genymotion.com/releases/genymotion-{{ version }}/genymotion-{{ version }}-linux_x64.bin
     dest: "{{ download_location }}/genymotion-{{ version }}-linux_x64.bin"
     mode: 0755
+  become: true
 
 - name: execute genymotion
   shell: echo y| {{ download_location }}/genymotion-{{ version }}-linux_x64.bin -d {{ install_location }}
@@ -27,4 +28,6 @@
       export PATH
 
 - name: source bashrc
-  shell: . "{{ ansible_env.HOME }}/.bashrc"
+  shell: ". {{ ansible_env.HOME }}/.bashrc"
+  args:
+    executable: /bin/bash
