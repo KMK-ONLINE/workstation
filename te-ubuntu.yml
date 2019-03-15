@@ -31,10 +31,12 @@
 
     - role: Oefenweb.virtualbox
       become: true
+
+
     - role: genymotion
-      version: "3.0.0"
+      version: "3.0.1"
       android_home: "/opt/android-sdk-linux"
-      download_location: "{{ ansible_env.HOME }}"
+      download_location: "/opt/android-sdk-linux"
       install_location: "/opt/"
 
     - role: nickpack.android_sdk
@@ -54,11 +56,11 @@
       become: true
 
     - role: nvm
-      version: 'v0.33.11'
+      version: 'v0.34.0'
     - role: node
-      version: '11.6.0'
+      version: '11.11.0'
     - role: appium
-      version: '1.10.0'
+      version: '1.11.1'
 
   tasks:
     - name: Install packages required for TE nodes
