@@ -10,7 +10,7 @@
 
     - name: Install base applications.
       apt:
-        pkg: ['glances', 'htop']
+        pkg: ['glances', 'htop', 'curl']
         update_cache: yes
         state: present
       become: true
