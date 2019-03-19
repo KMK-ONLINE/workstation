@@ -3,7 +3,7 @@
 
 - name: Some useful stuff for a TE workstation
   hosts: all
-  remote_user: ubuntu
+  remote_user: woi
 
 
   roles:
@@ -32,28 +32,12 @@
     - role: Oefenweb.virtualbox
       become: true
 
-
+    - role: android-sdk
+      username: woi
     - role: genymotion
       version: "3.0.1"
-      android_home: "/opt/android-sdk-linux"
-      download_location: "/opt/android-sdk-linux"
-      install_location: "/opt/"
-
-    - role: nickpack.android_sdk
-      vars:
-        android_sdk_download_location: https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
-        android_sdk_install_location: /opt
-        android_sdk_base_buildtools_version: 28.0.3
-        android_sdk_tools_to_install:
-          - build-tools-28.0.3
-          - platform-tools
-          - tools
-          # - extra-android-support
-          # - extra-google-m2repository
-          # - extra-android-m2repository
-        android_sdks_to_install:
-          - android-28
-      become: true
+      download_location: "/opt/android"
+      install_location: "/opt/android"
 
     - role: nvm
       version: 'v0.34.0'
@@ -95,3 +79,4 @@
 
     - name: Install virtualenv for python@2
       shell: pip2 install virtualenv
+      become: yes
