@@ -1,0 +1,70 @@
+- name: Install required dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - "imagemagick"
+    - "gradle"
+    - "ant"
+    - "ccache"
+    - "autoconf"
+    - "automake"
+    - "ant"
+    - "ccache"
+    - "zlibc"
+
+
+- name: Create root directory for Android SDK
+  file:
+    path: /opt/android
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    state: directory
+  become: yes
+
+- name: Create Android SDK directory
+  file:
+    path: /opt/android/sdk
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    state: directory
+  become: yes
+
+- name: Download Android SDK
+  unarchive:
+    src: "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
+    dest: "/opt/android/sdk"
+    remote_src: yes
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  become: yes
+
+
+- name: Install SDKs
+  shell: "yes | /opt/android/sdk/tools/android update sdk --all -u -t \"{{ item }}\""
+  become: yes
+  with_items:
+    - "build-tools-28.0.3"
+    - "android-28"
+    - "platform-tools"
+    - "tools"
+
+
+- name: Make sure Android directories have correct ownership
+  file:
+    path: /opt/android
+    recurse: yes
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+  become: yes
+
+- name: Set system wide ANDROID_HOME environment variable
+  lineinfile: dest=/etc/environment regexp=^ANDROID_HOME line='ANDROID_HOME="/opt/android/sdk/"'
+  become: yes
+
+- name: Add path to system-wide $PATH.
+  copy:
+    dest: /etc/profile.d/android-sdk-path.sh
+    content: 'PATH=$PATH:/opt/android/sdk/build-tools/28.0.3:/opt/android/sdk/tools:/opt/android/sdk/build-tools:/opt/android/sdk/platform-tools/'
+  become: yes
