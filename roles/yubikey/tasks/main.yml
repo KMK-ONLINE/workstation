@@ -7,7 +7,7 @@
 
 - name: Install Neo Manager
   apt:
-    pkg: yubikey-manager-qt
+    pkg: ['yubikey-manager-qt', 'yubico-piv-tool']
     state: latest
   become: true
 

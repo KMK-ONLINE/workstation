@@ -39,11 +39,14 @@ If you are provisioning a laptop you will want to add:
 
 #### Misc ToDo:
 
-    [ ] Workstation machine locking automatically
-    [ ] Check Garuda's setup Ubuntu setup script, should use workstation
     [ ] configure /etc/ansible/ansible.cfg
         change the default callback, you can only have one 'stdout' type  enabled at a time.
         stdout_callback = debug
+    [ ] Standard KMK projects need: `pip3 install peru`
+    [ ] Selenium runner needs: `openjdk-11-jre-headless`
+    [ ] Security needs: openvpn, opensc, gnupg2, scdaemon, pcscd, rng-tools, pinentry-curses, pinentry-gnome3
+    [ ] Workstation machine locking automatically
+    [ ] Check Garuda's setup Ubuntu setup script, should use workstation
 
 # Mac OS
 
