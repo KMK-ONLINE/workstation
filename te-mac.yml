@@ -19,15 +19,15 @@
       - git
       - mg
       - { name: fbsimctl, install_options: "HEAD" }
-      - { name: gnu-sed, install_options: "with-default-names" }
+      #- { name: gnu-sed, install_options: "default-names" }
       - ios-webkit-debug-proxy
       - imagemagick
       - libimobiledevice
       - maven
       - wget
       - bash-completion
-      - { name: python@2, install_options: "with-tcl-tk" }
-      - { name: python@3, install_options: "with-tcl-tk" }
+      - name: python@2
+      - { name: python@3, install_options: "tcl-tk" }
       - tcl-tk
       - zlib
     homebrew_uninstalled_packages:
@@ -45,7 +45,7 @@
     - role: nvm
       version: 'v0.34.0'
     - role: node
-      version: '11.11.0'
+      version: '11.12.0'
     - role: appium
       version: '1.11.1'
     - macos/remote-login
