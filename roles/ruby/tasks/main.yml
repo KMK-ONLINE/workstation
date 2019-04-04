@@ -17,7 +17,8 @@
     dest: "{{ home_dir }}/.irbrc"
 
 - name: Enable autoloading of chruby
-  shell: "source {{ home_dir }}/.bashrc && {{ item }}"
+  shell: ". {{ home_dir }}/.bashrc && {{ item }}"
+  become: true
   with_items:
     - bash-it enable plugin chruby-auto
   args:

@@ -1,9 +1,17 @@
+- name: Enable autoloading of chruby
+  shell: "source {{ home_dir }}/.bashrc && {{ item }}"
+  with_items:
+    - bash-it enable plugin chruby-auto
+  args:
+    executable: /bin/bash
+  ignore_errors: true
+
 - name: Install `git pair`
   command: bash -lc "gem install pivotal_git_scripts"
   become: true
 
-- name: Use our .pairs file
-  copy:
-    src: pairs
-    dest: "{{ home_dir }}/.pairs"
-    force: no
+#- name: Use our .pairs file
+#  copy:
+#    src: pairs
+#    dest: "{{ home_dir }}/.pairs"
+#    force: no

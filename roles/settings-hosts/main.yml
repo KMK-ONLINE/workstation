@@ -1,0 +1,4 @@
+- name: Add vidio host
+  linefile:
+    path: /etc/hosts
+    line: "10.10.10.12 vidio.test m.vidio.test www.vidio.test bbm.vidio.test"

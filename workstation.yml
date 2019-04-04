@@ -1,4 +1,4 @@
-- import_playbook: base.yml
+#- import_playbook: base.yml
 
 - name: Some useful stuff for a workstation
   hosts: all
@@ -21,38 +21,38 @@
     # - debug: msg={{ variable }}
     # tags: focus # ./focus.sh workstation.yml
 
-    - role: ruby
-      become: true
+    #- role: ruby
+    #  become: true
 
     - role: git-pair
       become: true
 
-    - role: rdeknijf.chromedriver
-      become: true
+    #- role: rdeknijf.chromedriver
+    #  become: true
 
-    - role: andrewrothstein.vagrant
-      become: true
+    #- role: andrewrothstein.vagrant
+    #  become: true
 
-    - role: Oefenweb.virtualbox
-      become: true
+    #- role: Oefenweb.virtualbox
+    #  become: true
 
-    - role: ANXS.postgresql
-      postgresql_version: 10
-      postgresql_users:
-        - name: "{{ lookup('env','USER') }}"
-      postgresql_user_privileges:
-        - name: "{{ lookup('env','USER') }}"
-          priv: "ALL"
-          db: postgres
-          role_attr_flags: "CREATEDB"
-      postgresql_ext_install_dev_headers: yes
-      become: true
+    #- role: ANXS.postgresql
+    #  postgresql_version: 10
+    #  postgresql_users:
+    #    - name: "{{ lookup('env','USER') }}"
+    #  postgresql_user_privileges:
+    #    - name: "{{ lookup('env','USER') }}"
+    #      priv: "ALL"
+    #      db: postgres
+    #      role_attr_flags: "CREATEDB"
+    #  postgresql_ext_install_dev_headers: yes
+    #  become: true
 
-    - role: google-cloud-sdk
-      become: true
+    #- role: google-cloud-sdk
+    #  become: true
 
-    - role: yubikey
+    #- role: yubikey
 
-    - role: ocs-agent
-      become: true
-      when: ocs_server is defined
+    #- role: ocs-agent
+    #  become: true
+    #  when: ocs_server is defined

@@ -1,0 +1,16 @@
+- name: Install zsh
+  apt:
+    name: "zsh"
+    state: present
+
+- name: Fonts fowerline
+  apt:
+    name: "fonts-powerline"
+    state: present
+
+- name: Install and configure oh-my-zsh
+  shell: "sh -c '$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
+  replace:
+    path: "{{ home_dir }}/.zshrc"
+    regexp: 'ZSH_THEME="robbyrussell"'
+    replace: 'ZSH_THEME="amuse"'

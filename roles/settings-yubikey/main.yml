@@ -1,0 +1,20 @@
+- name: Install requirements yubikey
+  apt:
+    pkg: ['gnupg2', 'scdaemon', 'pcscd', 'rng-tools', 'pinentry-curses', 'pinentry-gnome3']
+    state: latest
+
+- name: Prepare gpg-agent
+  copy:
+    src: gpg-agent-conf
+    dest: "{{ home_dir }}/.gnupg/gpg-agent.conf"
+    force: yes
+  shell: "pkill ssh-agent; pkill gpg-agent; gpg-agent --daemon"
+
+- name: Adding ssh agent subsystem ubuntu 18.04
+  when: ansible_distribution_version == '18.04'
+  shell: "echo 'export SSH_AUTH_SOCK=/run/user/${UID}/gnupg/S.gpg-agent.ssh' >> {{ home_dir }}/.zshrc"
+
+- name: Adding ssh agent subsystem
+  when: ansible_distribution_version == '16.04'
+  shell: "echo 'export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh' >> {{ home_dir }}/.zshrc"
+

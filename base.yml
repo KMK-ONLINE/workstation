@@ -16,8 +16,8 @@
       become: true
 
   roles:
-    # - debug: msg={{ variable }}
-    # tags: focus # ./focus.sh base.yml
+     #- debug: msg={{ variable }}
+     #tags: focus # ./focus.sh base.yml
 
     - role: git
     - role: vim
@@ -25,7 +25,7 @@
     - role: bash-it
     - role: shortcuts
     - role: settings-input
-    - role: settings-display
-
-    - role: cmprescott.chrome
-      become: true
+      #    - role: settings-display
+      #
+      #    - role: cmprescott.chrome
+      #      become: true

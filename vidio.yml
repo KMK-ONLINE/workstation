@@ -1,0 +1,21 @@
+#- import_playbook: workstation.yml
+
+- name: Playbook for vidio workstation
+  hosts: all
+  remote_user: woi
+
+  vars:
+    home_dir: "/home/{{ lookup('env','USER') }}"
+
+  roles:
+    - role: zsh
+    - role: nvm
+      version: 'v0.34.0'
+    - role: node
+      version: '4.9.1'
+    - role: settings-yubikey
+
+      #  tasks:
+      #    - name: Install virtualenv for python@2
+      #      shell: pip2 install virtualenv
+      #      become: yes
