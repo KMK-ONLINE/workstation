@@ -18,7 +18,7 @@
       - carthage
       - git
       - mg
-      - { name: fbsimctl, install_options: "HEAD" }
+      #- { name: fbsimctl, install_options: "HEAD" }
       #- { name: gnu-sed, install_options: "default-names" }
       - ios-webkit-debug-proxy
       - imagemagick
@@ -45,9 +45,9 @@
     - role: nvm
       version: 'v0.34.0'
     - role: node
-      version: '11.12.0'
+      version: '11.13.0'
     - role: appium
-      version: '1.11.1'
+      version: '1.12.1'
     - macos/remote-login
     - macos/remote-management-add
 
