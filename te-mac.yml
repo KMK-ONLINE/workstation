@@ -34,6 +34,7 @@
       - node
       - nvm
     homebrew_cask_apps:
+      - google-chrome
       - chromedriver
       - java8
       # - fastlane
